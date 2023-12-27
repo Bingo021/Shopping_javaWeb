@@ -1,14 +1,18 @@
 package model;
 
-import java.security.Timestamp;
-
 public class User {
     private int userID;
     private String username;
     private String password;
     private String email;
-    private Timestamp createTime;
-
+    private java.sql.Timestamp createTime;
+    public User() {
+    }
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
     public int getUserID() {
         return userID;
     }
@@ -41,11 +45,11 @@ public class User {
         this.email = email;
     }
 
-    public Timestamp getCreateTime() {
+    public java.sql.Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
 }

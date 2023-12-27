@@ -31,6 +31,14 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -43,16 +51,26 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int deliveryAddressID = resultSet.getInt("DeliveryAddressID");
-                userID = resultSet.getInt("UserID");
-                String recipientName = resultSet.getString("RecipientName");
-                String recipientPhone = resultSet.getString("RecipientPhone");
-                String recipientAddress = resultSet.getString("RecipientAddress");
-                DeliveryAddress address = new DeliveryAddress(deliveryAddressID, userID, recipientName, recipientPhone, recipientAddress);
-                addresses.add(address);
+                DeliveryAddress deliveryAddress = new DeliveryAddress();
+                deliveryAddress.setDeliveryAddressID(resultSet.getInt("DeliveryAddressID"));
+                deliveryAddress.setUserID(resultSet.getInt("UserID"));
+                deliveryAddress.setRecipientName(resultSet.getString("RecipientName"));
+                deliveryAddress.setRecipientPhone(resultSet.getString("RecipientPhone"));
+                deliveryAddress.setRecipientAddress(resultSet.getString("RecipientAddress"));
+                addresses.add(deliveryAddress);
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return addresses;
     }
@@ -69,11 +87,12 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -87,11 +106,12 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }

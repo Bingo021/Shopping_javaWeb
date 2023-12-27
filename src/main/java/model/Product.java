@@ -1,13 +1,11 @@
 package model;
 
-import java.security.Timestamp;
-
 public class Product {
     private int productID;
     private String productName;
     private double price;
     private String description;
-    private Timestamp createTime;
+    private java.sql.Timestamp createTime;
 
     public int getProductID() {
         return productID;
@@ -41,11 +39,11 @@ public class Product {
         this.description = description;
     }
 
-    public Timestamp getCreateTime() {
+    public java.sql.Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
 }
