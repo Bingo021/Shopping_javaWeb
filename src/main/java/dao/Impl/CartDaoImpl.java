@@ -30,6 +30,14 @@ public class CartDaoImpl implements CartDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -42,21 +50,24 @@ public class CartDaoImpl implements CartDao {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Cart cart = new Cart();
-                cart.setProductID(resultSet.getInt("productId"));
-                cart.setQuantity(resultSet.getInt("quantity"));
+                cart.setProductID(resultSet.getInt("ProductId"));
+                cart.setQuantity(resultSet.getInt("Quantity"));
                 cartList.add(cart);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
-        return cartList; // 如果购物车为空，返回null或一个空的List。根据实际情况来调整。
+        return cartList;
     }
 
     @Override
@@ -70,11 +81,14 @@ public class CartDaoImpl implements CartDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -96,11 +110,14 @@ public class CartDaoImpl implements CartDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }

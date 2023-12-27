@@ -7,7 +7,7 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Timestamp createTime;
+    private java.sql.Timestamp createTime;
 
     public int getUserID() {
         return userID;
@@ -41,11 +41,11 @@ public class User {
         this.email = email;
     }
 
-    public Timestamp getCreateTime() {
+    public java.sql.Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
 }

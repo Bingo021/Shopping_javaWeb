@@ -7,10 +7,6 @@ public class DeliveryAddress {
     private String recipientPhone;
     private String recipientAddress;
 
-    public DeliveryAddress(int deliveryAddressID, int userID, String recipientName, String recipientPhone, String recipientAddress) {
-
-    }
-
     public int getDeliveryAddressID() {
         return deliveryAddressID;
     }

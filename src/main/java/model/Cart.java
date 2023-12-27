@@ -7,7 +7,7 @@ public class Cart {
     private int userID;
     private int productID;
     private int quantity;
-    private Timestamp createTime;
+    private java.sql.Timestamp createTime;
 
     public int getCartID() {
         return cartID;
@@ -41,11 +41,11 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public Timestamp getCreateTime() {
+    public java.sql.Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
 }

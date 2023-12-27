@@ -7,7 +7,7 @@ public class Order {
     private int userID;
     private int productID;
     private String orderStatus; // 例如：待支付、已支付等状态
-    private Timestamp createTime;
+    private java.sql.Timestamp createTime;
 
     public int getOrderID() {
         return orderID;
@@ -41,11 +41,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public Timestamp getCreateTime() {
+    public java.sql.Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(java.sql.Timestamp createTime) {
         this.createTime = createTime;
     }
 }
