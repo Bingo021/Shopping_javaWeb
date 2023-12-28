@@ -1,21 +1,27 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rum
-  Date: 2023/12/23
-  Time: 11:53
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>商品详情</title>
+    <meta charset="UTF-8">
+    <title>商品详情 - 网上购物系统</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<%@ include file="menu.jsp" %> <!-- 假设存在一个用于导航的menu.jsp文件 -->
-<h2><%= product.getProductName() %></h2>
-<p><%= product.getDescription() %></p>
-<!-- 其他商品详情信息 -->
-<p><button onclick="addToCart('<%= product.getProductID() %>')">加入购物车</button></p> <!-- 使用JavaScript添加到购物车 -->
+<div class="container">
+    <h1>商品详情</h1>
+    <!-- 商品详细信息 -->
+    <div class="product-detail">
+        <img src="product1.jpg" alt="Product 1">
+        <h3>商品1</h3>
+        <p>价格：$20.00</p>
+        <p>详细描述：这是商品1的详细描述。</p>
+        <!-- 加入购物车按钮 -->
+        <form action="CartServlet" method="post">
+            <input type="hidden" name="productId" value="1">
+            <input type="number" name="quantity" value="1" min="1">
+            <input type="submit" value="加入购物车">
+        </form>
+    </div>
+</div>
 </body>
 </html>

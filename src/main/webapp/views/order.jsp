@@ -1,34 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rum
-  Date: 2023/12/23
-  Time: 11:55
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>订单详情</title>
+    <meta charset="UTF-8">
+    <title>订单详情 - 网上购物系统</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<%@ include file="menu.jsp" %>
-<h2>订单详情</h2>
-<p><%= order.getOrderStatus() %></p> <!-- 显示订单状态 -->
-<p><%= order.getOrderDate() %></p> <!-- 显示订单日期价格</th>
-        </tr>
-        <%
-            // 假设存在一个方法来获取订单中的商品并存储在List中
-            List<OrderDetail> orderDetails = getOrderDetails(order.getOrderID());
-            for (OrderDetail detail : orderDetails) { %>
-                <tr>
-                    <td><%= detail.getProduct().getProductName() %></td>
-                    <td><%= detail.getQuantity() %></td>
-                    <td><%= detail.getPrice() %></td>
-                </tr>
-            <% } %>
-    </table>
-    <p><%= order.getTotalPrice() %></p> <!-- 显示总价格 -->
-<!-- 其他订单详情信息 -->
+<div class="container">
+    <h1>订单详情</h1>
+    <!-- 订单详细信息 -->
+    <div class="order-details">
+        <!-- 订单商品1 -->
+        <div class="order-item">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>商品1</h3>
+            <p>价格：$20.00</p>
+            <p>数量：2</p>
+        </div>
+        <!-- 更多订单商品... -->
+    </div>
+    <!-- 总金额 -->
+    <p>总金额：$40.00</p>
+    <!-- 收货地址信息 -->
+    <div class="delivery-address">
+        <h2>收货地址</h2>
+        <p>姓名：张三</p>
+        <p>电话：1234567890</p>
+        <p>地址：北京市朝阳区XXX街道</p>
+    </div>
+    <!-- 支付记录信息 -->
+    <div class="payment-record">
+        <h2>支付记录</h2>
+        <p>支付方式：支付宝</p>
+        <p>支付金额：$40.00</p>
+        <p>支付状态：已支付</p>
+        <p>支付时间：2023-01-01 12:00:00</p>
+    </div>
+</div>
 </body>
 </html>

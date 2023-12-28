@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rum
-  Date: 2023/12/23
-  Time: 11:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -13,15 +6,24 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<form action="LoginServlet" method="post">
-    <label for="username">用户名:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">密码:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <input type="submit" value="登录">
-    <a href="register.jsp">注册新账户</a>
-</form>
+<div class="form-container">
+    <form action="LoginServlet" method="post">
+        <h2>用户登录</h2>
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="userType">登录类型:</label>
+        <select id="userType" name="userType" required>
+            <option value="user">用户</option>
+            <option value="admin">管理员</option>
+        </select>
+        <br>
+        <input type="submit" value="登录" class="submit-btn">
+        <a href="register.jsp">注册新账户</a>
+    </form>
+</div>
 </body>
 </html>

@@ -1,27 +1,32 @@
-<%@ page import="model.Product" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Rum
-  Date: 2023/12/23
-  Time: 11:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>商品列表</title>
+    <meta charset="UTF-8">
+    <title>商品列表 - 网上购物系统</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<%@ include file="menu.jsp" %> <!-- 假设存在一个用于导航的menu.jsp文件 -->
-<h2>商品列表</h2>
-<ul>
-    <%
-        // 假设存在一个方法来获取所有商品并存储在List中
-        List<Product> Products = getProducts();
-        for (Product product : Products) { %>
-    <li><%= product.getProductName() %> - <%= product.getPrice() %></li>
-    <% } %>
-</ul>
+<div class="container">
+    <h1>商品列表</h1>
+    <!-- 商品列表展示 -->
+    <div class="product-list">
+        <!-- 商品1 -->
+        <div class="product">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>商品1</h3>
+            <p>价格：$20.00</p>
+            <a href="productDetail.jsp?id=1">查看详情</a>
+        </div>
+        <!-- 商品2 -->
+        <div class="product">
+            <img src="product2.jpg" alt="Product 2">
+            <h3>商品2</h3>
+            <p>价格：$30.00</p>
+            <a href="productDetail.jsp?id=2">查看详情</a>
+        </div>
+        <!-- 更多商品... -->
+    </div>
+</div>
 </body>
 </html>

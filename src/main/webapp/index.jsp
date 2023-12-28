@@ -24,6 +24,7 @@
 <body>
 <h2>欢迎来到网上购物系统</h2>
 <p>请选择以下操作：</p>
+<a href="views/productList.jsp">浏览商品</a><br>
 <a href="views/login.jsp">登录</a>
 <a href="views/register.jsp">注册</a>
 </body>
