@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div class="register-container">
+<div class="form-container">
     <form action="RegisterServlet" method="post">
         <h2>注册新账号</h2>
         <div class="form-group">
@@ -22,8 +22,9 @@
             <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <input type="submit" value="注册" class="register-btn">
+            <input type="submit" value="注册" class="submit-btn">
         </div>
+        <a href="login.jsp">已有账户？立即登录</a>
     </form>
 </div>
 </body>

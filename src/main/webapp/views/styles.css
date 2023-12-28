@@ -3,19 +3,25 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     padding: 20px;
-}
-
-h1, h2, h3 {
-    color: #333;
+    text-align: center;
 }
 
 /* 表单样式 */
-form {
+.form-container {
     margin: 0 auto;
+    max-width: 300px;
+}
+
+form {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+h2 {
+    color: #333;
 }
 
 label {
@@ -23,14 +29,18 @@ label {
     margin-bottom: 10px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"],
+select,
+input[type="email"] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
-input[type="submit"] {
+.submit-btn {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -38,29 +48,10 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
 }
-.container {
-    width: 400px;
-    margin: 0 auto; /* 水平居中 */
-}
 
-.login-form {
-    background-color: #fff; /* 白色背景 */
-    padding: 20px; /* 内边距 */
-    border-radius: 5px; /* 圆角 */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 阴影 */
-}
-
-.login-btn {
-    background-color: #4CAF50; /* 绿色背景 */
-    color: white; /* 白色文本 */
-    border: none; /* 无边框 */
-    padding: 10px 20px; /* 内边距 */
-    border-radius: 5px; /* 圆角 */
-    cursor: pointer; /* 鼠标指针样式 */
-}
-
-.register-link {
-    display: block; /* 块级元素 */
-    margin-top: 10px; /* 上边距 */
-    text-align: center; /* 文本居中 */
+a {
+    display: block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
 }
