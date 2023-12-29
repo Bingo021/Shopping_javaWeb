@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>注册 - 网上购物系统</title>
     <link rel="shortcut icon" href="../images/favicon1.png"/>
-        <link href="../css/styles2.css" rel="stylesheet" type="text/css">
+    <link href="../css/styles2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="w">

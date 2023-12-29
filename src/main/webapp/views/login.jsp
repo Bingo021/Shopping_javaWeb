@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>登录 - 网上购物系统</title>
     <link href="../images/favicon1.png" rel="shortcut icon"/>
-        <link href="../css/styles2.css" rel="stylesheet" type="text/css">
+    <link href="../css/styles2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="w">
