@@ -43,7 +43,7 @@
 </head>
 <body>
 <header>
-    <div class="content">
+    <div class="container">
         <div class="nav">
             <a href="index.jsp"><img src="images/logo1.png"/></a>
             <ul>
@@ -158,7 +158,7 @@
     </ul>
 </div>
 <div class="footer">
-    <div class="w">
+    <div class="container">
         <div class="footer1">
             <h3>全球购</h3>
             <ul>
