@@ -19,6 +19,7 @@ public class ProductDaoImpl implements ProductDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public void addProduct(Product product) {
         try {
@@ -29,7 +30,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -48,9 +49,9 @@ public class ProductDaoImpl implements ProductDao {
         Product product = null;
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE ProductID = ?");
-            preparedStatement.setInt(1,productID);
+            preparedStatement.setInt(1, productID);
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
@@ -59,7 +60,7 @@ public class ProductDaoImpl implements ProductDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -80,7 +81,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM products");
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Product product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
@@ -91,7 +92,7 @@ public class ProductDaoImpl implements ProductDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -111,9 +112,9 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> products = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM products WHERE ProductName = ?");
-            preparedStatement.setString(1,productName);
+            preparedStatement.setString(1, productName);
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Product product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
@@ -124,7 +125,7 @@ public class ProductDaoImpl implements ProductDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -143,14 +144,14 @@ public class ProductDaoImpl implements ProductDao {
     public void updateProduct(Product product) {
         try {
             preparedStatement = connection.prepareStatement("UPDATE products SET ProductName = ?, Price = ?, Description = ? WHERE ProductID = ?");
-            preparedStatement.setString(1,product.getProductName());
-            preparedStatement.setDouble(2,product.getPrice());
-            preparedStatement.setString(3,product.getDescription());
-            preparedStatement.setInt(4,product.getProductID());
+            preparedStatement.setString(1, product.getProductName());
+            preparedStatement.setDouble(2, product.getPrice());
+            preparedStatement.setString(3, product.getDescription());
+            preparedStatement.setInt(4, product.getProductID());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -168,11 +169,11 @@ public class ProductDaoImpl implements ProductDao {
     public void deleteProduct(int productID) {
         try {
             preparedStatement = connection.prepareStatement("DELETE FROM products WHERE ProductID = ?");
-            preparedStatement.setInt(1,productID);
+            preparedStatement.setInt(1, productID);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();

@@ -30,7 +30,7 @@ public class CartDaoImpl implements CartDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -60,7 +60,8 @@ public class CartDaoImpl implements CartDao {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -84,7 +85,8 @@ public class CartDaoImpl implements CartDao {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -113,7 +115,8 @@ public class CartDaoImpl implements CartDao {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {

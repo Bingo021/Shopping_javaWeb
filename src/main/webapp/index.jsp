@@ -3,10 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>购你所购|今日特惠</title>
+    <title>网上购物系统</title>
     <meta name="keywords" content="全球购，海外购">
-    <link rel="shortcut icon" href="favicon1.png" />
-    <link rel="stylesheet" type="text/css" href="views/styles.css">
+    <link rel="shortcut icon" href="images/favicon1.png"/>
+    <link rel="stylesheet" type="text/css" href="views/styles1.css">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var index = 0;
@@ -158,7 +158,7 @@
     </ul>
 </div>
 <div class="footer">
-    <div class="container">
+    <div class="w">
         <div class="footer1">
             <h3>全球购</h3>
             <ul>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>注册 - 网上购物系统</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles1.css">
 </head>
 <body>
 <div class="form-container">

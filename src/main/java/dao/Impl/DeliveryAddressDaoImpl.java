@@ -61,11 +61,12 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -86,7 +87,7 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -105,7 +106,7 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();

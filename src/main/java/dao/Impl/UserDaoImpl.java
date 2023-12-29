@@ -17,17 +17,18 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public void addUser(User user) {
         try {
             preparedStatement = connection.prepareStatement("INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?)");
-            preparedStatement.setString(1,user.getUsername());
-            preparedStatement.setString(2,user.getPassword());
-            preparedStatement.setString(3,user.getEmail());
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -46,9 +47,9 @@ public class UserDaoImpl implements UserDao {
         User user = null;
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE Username = ?");
-            preparedStatement.setString(1,username);
+            preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 user = new User();
                 user.setUserID(resultSet.getInt("UserID"));
                 user.setUsername(resultSet.getString("Username"));
@@ -58,7 +59,7 @@ public class UserDaoImpl implements UserDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -78,9 +79,9 @@ public class UserDaoImpl implements UserDao {
         User user = null;
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE Email = ?");
-            preparedStatement.setString(1,email);
+            preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 user = new User();
                 user.setUserID(resultSet.getInt("UserID"));
                 user.setUsername(resultSet.getString("Username"));
@@ -90,7 +91,7 @@ public class UserDaoImpl implements UserDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -109,14 +110,14 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         try {
             preparedStatement = connection.prepareStatement("UPDATE users SET Username = ?, Password = ?, Email = ? WHERE UserID = ?");
-            preparedStatement.setString(1,user.getUsername());
+            preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3,user.getEmail());
-            preparedStatement.setInt(4,user.getUserID());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setInt(4, user.getUserID());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -134,11 +135,11 @@ public class UserDaoImpl implements UserDao {
     public void deleteUser(int userID) {
         try {
             preparedStatement = connection.prepareStatement("DELETE FROM users WHERE UserID = ?");
-            preparedStatement.setInt(1,userID);
+            preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();

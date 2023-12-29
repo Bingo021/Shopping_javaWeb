@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>订单详情 - 网上购物系统</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles1.css">
 </head>
 <body>
 <div class="container">

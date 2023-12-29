@@ -19,6 +19,7 @@ public class OrderDaoImpl implements OrderDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public void addOrder(Order order) {
         try {
@@ -29,11 +30,12 @@ public class OrderDaoImpl implements OrderDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -63,7 +65,8 @@ public class OrderDaoImpl implements OrderDao {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -91,11 +94,12 @@ public class OrderDaoImpl implements OrderDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -114,7 +118,7 @@ public class OrderDaoImpl implements OrderDao {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();

@@ -19,6 +19,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public void addOrderDetail(OrderDetail orderDetail) {
         try {
@@ -31,11 +32,12 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
@@ -52,7 +54,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             preparedStatement.setInt(1, orderID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                OrderDetail orderDetail =new OrderDetail();
+                OrderDetail orderDetail = new OrderDetail();
                 orderDetail.setOrderDetailID(resultSet.getInt("OrderDetailID"));
                 orderDetail.setProductID(resultSet.getInt("ProductID"));
                 orderDetail.setQuantity(resultSet.getInt("Quantity"));
@@ -62,16 +64,18 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
-                }if (resultSet != null) {
+                }
+                if (resultSet != null) {
                     resultSet.close();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }return orderDetails;
+        }
+        return orderDetails;
     }
 }
