@@ -6,7 +6,7 @@
     <title>网上购物系统</title>
     <meta name="keywords" content="全球购，海外购">
     <link rel="shortcut icon" href="images/favicon1.png"/>
-    <link rel="stylesheet" type="text/css" href="views/styles1.css">
+    <link rel="stylesheet" type="text/css" href="css/styles1.css">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var index = 0;
@@ -84,7 +84,8 @@
                 <input type="text" placeholder="" class="a1">
             </label>
             <button class="a2"><a href="#">搜索</a></button>
-            <span class="a3"><a href="denglu.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="zhuce.html">注册</a></span>
+            <span class="a3"><a href="views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                    href="views/register.jsp">注册</a></span>
         </div>
     </div>
 </header>

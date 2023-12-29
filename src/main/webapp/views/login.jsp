@@ -1,21 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>登录 - 网上购物系统</title>
-    <link href="images/favicon1.png" rel="shortcut icon"/>
-    <link href="views/styles2.css" rel="stylesheet" type="text/css">
+    <link href="../images/favicon1.png" rel="shortcut icon"/>
+        <link href="../css/styles2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="w">
     <header>
         <div class="logo">
-            <a href="index.jsp"> <img alt="" src="images/logo1.png"></a>
+            <a href="../index.jsp"> <img alt="" src="../images/logo1.png"></a>
         </div>
     </header>
     <div class="registerarea">
         <h3>登录用户
-            <div class="login">我没有账号，去<a href="zhuce.html">注册</a></div>
+            <div class="login">我没有账号，去<a href="register.jsp">注册</a></div>
         </h3>
         <div class="reg_form">
             <form action="">

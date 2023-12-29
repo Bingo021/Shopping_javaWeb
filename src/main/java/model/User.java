@@ -6,13 +6,16 @@ public class User {
     private String password;
     private String email;
     private java.sql.Timestamp createTime;
+
     public User() {
     }
+
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
+
     public int getUserID() {
         return userID;
     }
