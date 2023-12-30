@@ -14,9 +14,9 @@
 <nav>
     <div class="container">
         <ul>
-            <li><a href="#">订单管理</a></li>
-            <li><a href="#">商品管理</a></li>
-            <li><a href="#">用户管理</a></li>
+            <li><a href="admin_orders.jsp">订单管理</a></li>
+            <li><a href="admin_products.jsp">商品管理</a></li>
+            <li><a href="admin_users.jsp">用户管理</a></li>
         </ul>
     </div>
 </nav>

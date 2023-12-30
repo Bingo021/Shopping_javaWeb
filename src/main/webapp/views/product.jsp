@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>我的订单 - 网上购物系统</title>
+    <title>商品详情 - 网上购物系统</title>
     <link rel="shortcut icon" href="../images/favicon1.png"/>
     <link rel="stylesheet" type="text/css" href="../css/styles1.css">
 </head>
@@ -55,7 +55,7 @@
     </div>
 </header>
 <div class="container content">
-    <h2>我的订单</h2>
+    <h2>商品详情</h2>
 </div>
 <footer>
     <div class="link">
@@ -120,3 +120,4 @@
 </footer>
 </body>
 </html>
+

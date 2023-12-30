@@ -1,3 +1,4 @@
+<%@ page import="com.Shopping.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -77,6 +78,14 @@
                         <p><a href="#">品牌资讯</a></p>
                     </div>
                 </li>
+                <% if (request.getAttribute("user") != null) { %>
+                <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a></li>
+                <li><a href="#">购物车</a></li>
+                <li><a href="#">订单</a></li>
+                <% } else { %>
+                <li><a href="views/login.jsp">登录</a></li>
+                <li><a href="views/register.jsp">注册</a></li>
+                <% } %>
             </ul>
         </div>
         <div class="search">
