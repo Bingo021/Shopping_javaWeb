@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private int Role;
     private java.sql.Timestamp createTime;
 
     public User() {
@@ -46,6 +47,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getRole() {
+        return Role;
+    }
+
+    public void setRole(int role) {
+        Role = role;
     }
 
     public java.sql.Timestamp getCreateTime() {

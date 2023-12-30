@@ -4,42 +4,42 @@ import com.Shopping.dao.ProductDao;
 import com.Shopping.model.Product;
 import com.Shopping.service.ProductService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private final ProductDao productDao;
-
-    public ProductServiceImpl(ProductDao productDao) {
-        this.productDao = productDao;
-    }
-
     @Override
-    public void addProduct(Product product) {
-        productDao.addProduct(product);
+    public Product createProduct(String productName, BigDecimal price, String description) {
+        return null;
     }
 
     @Override
     public Product getProductById(int productId) {
-        return productDao.getProductById(productId);
+        return null;
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return productDao.getAllProducts();
+    public void updateProductByAdmin(int productId, BigDecimal newPrice, String newDescription) {
+
     }
 
     @Override
-    public List<Product> getProductsByName(String productName) {
-        return productDao.getProductsByName(productName);
+    public void removeProductByAdmin(int productId) {
+
     }
 
     @Override
-    public void updateProduct(Product product) {
-        productDao.updateProduct(product);
+    public List<Product> getFeaturedProducts() {
+        return null;
     }
 
     @Override
-    public void deleteProduct(int productId) {
-        productDao.deleteProduct(productId);
+    public List<Product> searchProducts(String keyword) {
+        return null;
+    }
+
+    @Override
+    public Product getProductDetails(int productId) {
+        return null;
     }
 }

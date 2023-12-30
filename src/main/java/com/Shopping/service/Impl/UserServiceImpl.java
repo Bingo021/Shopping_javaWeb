@@ -4,36 +4,42 @@ import com.Shopping.dao.UserDao;
 import com.Shopping.model.User;
 import com.Shopping.service.UserService;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
-    private final UserDao userDao;
-
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    @Override
+    public User createUser(String username, String password, String email) {
+        return null;
     }
 
     @Override
-    public void addUser(User user) {
-        userDao.addUser(user);
+    public User getUserById(int userId) {
+        return null;
     }
 
     @Override
-    public User getUserByUsername(String username) {
-        return userDao.getUserByUsername(username);
-    }
+    public void updateUser(int userId, String newUsername, String newEmail, String newPassword) {
 
-    @Override
-    public User getUserByEmail(String email) {
-        return userDao.getUserByEmail(email);
-    }
-
-    @Override
-    public void updateUser(User user) {
-        userDao.updateUser(user);
     }
 
     @Override
     public void deleteUser(int userId) {
-        userDao.deleteUser(userId);
+
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public void grantAdminRole(int userId) {
+
+    }
+
+    @Override
+    public void revokeAdminRole(int userId) {
+
     }
 }
 

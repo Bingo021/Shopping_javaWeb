@@ -1,67 +1,123 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>结算 - 网上购物系统</title>
-    <link rel="stylesheet" type="text/css" href="styles1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单支付</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .payment-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>订单结算</h1>
 
-    <!-- 显示购物车中的商品信息 -->
-    <div class="cart-items">
-        <h2>购物车商品</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>商品名称</th>
-                <th>单价</th>
-                <th>数量</th>
-                <th>小计</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>商品1</td>
-                <td>$20.00</td>
-                <td>2</td>
-                <td>$40.00</td>
-            </tr>
-            <!-- 更多购物车商品... -->
-            </tbody>
-        </table>
+<header>
+    <h1>订单支付</h1>
+</header>
+
+<div class="payment-container">
+    <label for="payment-method">选择支付方式：</label>
+    <select id="payment-method" name="payment-method" onchange="showQRCode()">
+        <option value="alipay">支付宝</option>
+        <option value="wechat">微信支付</option>
+    </select>
+
+    <label for="amount">支付金额：</label>
+    <input type="text" id="amount" name="amount" placeholder="支付金额">
+
+    <div class="qr-code" id="qr-code">
+        <!-- 这里将根据选择的支付方式显示对应的收款二维码 -->
     </div>
 
-    <!-- 显示总金额 -->
-    <div class="total-amount">
-        <h2>总金额</h2>
-        <p>$40.00</p>
-    </div>
-
-    <!-- 显示收货地址信息 -->
-    <div class="delivery-address">
-        <h2>收货地址</h2>
-        <p>姓名：张三</p>
-        <p>电话：1234567890</p>
-        <p>地址：北京市朝阳区XXX街道</p>
-    </div>
-
-    <!-- 选择支付方式 -->
-    <div class="payment-method">
-        <h2>选择支付方式</h2>
-        <form action="PlaceOrderServlet" method="post">
-            <label for="paymentMethod">支付方式：</label>
-            <select id="paymentMethod" name="paymentMethod" required>
-                <option value="支付宝">支付宝</option>
-                <option value="微信支付">微信支付</option>
-                <!-- 更多支付方式... -->
-            </select>
-            <br>
-            <input type="submit" value="确认支付">
-        </form>
-    </div>
+    <button onclick="scanCode()">扫码支付</button>
 </div>
+
+<footer>
+    <p>&copy; 2024 网上购物系统</p>
+</footer>
+
+<script>
+    function showQRCode() {
+        var paymentMethod = document.getElementById("payment-method").value;
+        var qrCodeContainer = document.getElementById("qr-code");
+
+        // 清空容器内容
+        qrCodeContainer.innerHTML = "";
+
+        // 创建 img 元素
+        var qrCodeImg = document.createElement("img");
+        qrCodeImg.src = "../images/" + paymentMethod + ".jpg";
+        qrCodeImg.alt = paymentMethod + "支付二维码";
+
+        // 将 img 元素添加到容器中
+        qrCodeContainer.appendChild(qrCodeImg);
+    }
+
+    function scanCode() {
+        // 这里可以添加扫码支付的逻辑，例如调用相应的扫码支付库
+        alert('调用扫码支付');
+    }
+
+    // 初始化时显示默认的二维码
+    showQRCode();
+</script>
+
 </body>
 </html>

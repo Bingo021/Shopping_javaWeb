@@ -1,9 +1,12 @@
 package com.Shopping.dao.Impl;
 
 import com.Shopping.dao.UserDao;
+import com.Shopping.model.Product;
 import com.Shopping.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     private Connection connection;
@@ -151,5 +154,38 @@ public class UserDaoImpl implements UserDao {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public List<User> getUsersByRole(int role) {
+        List<User> users = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM users");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUserID(resultSet.getInt("UserID"));
+                user.setUsername(resultSet.getString("Username"));
+                user.setPassword(resultSet.getString("Password"));
+                user.setEmail(resultSet.getString("Email"));
+                user.setRole(resultSet.getInt("Role"));
+                user.setCreateTime(resultSet.getTimestamp("CreateTime"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return users;
     }
 }

@@ -328,3 +328,51 @@ nav .btn span:hover {
 .checkout-btn {
     background-color: #2196F3;
 }
+
+.order-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-header {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.order-details {
+    padding: 15px;
+}
+
+.order-number,
+.order-date {
+    font-weight: bold;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.order-actions button {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.order-actions button:hover {
+    background-color: #1c6da8;
+}
