@@ -1,42 +1,116 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page import="com.Shopping.model.User" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>订单详情 - 网上购物系统</title>
-    <link rel="stylesheet" type="text/css" href="styles1.css">
+    <meta charset="utf-8">
+    <title>我的订单 - 网上购物系统</title>
+    <link rel="shortcut icon" href="../images/favicon1.png"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles1.css">
 </head>
 <body>
-<div class="container">
-    <h1>订单详情</h1>
-    <!-- 订单详细信息 -->
-    <div class="order-details">
-        <!-- 订单商品1 -->
-        <div class="order-item">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>商品1</h3>
-            <p>价格：$20.00</p>
-            <p>数量：2</p>
+<header>
+    <div class="container">
+        <div class="nav">
+            <a href="../index.jsp"><img src="../images/logo1.png"/></a>
+            <ul>
+                <li><a href="#">首页</a>
+                    <div>
+                        <p><a href="index.jsp">美妆个护</a></p>
+                        <p><a href="#">食品保健</a></p>
+                        <p><a href="#">母婴用品</a></p>
+                        <p><a href="#">服饰鞋包</a></p>
+                        <p><a href="#">生活/数码</a></p>
+                    </div>
+                </li>
+                <li><a href="#">全球精选</a>
+                </li>
+                <li><a href="#">进口超市</a>
+                </li>
+                <li><a href="#">海外直购</a>
+                </li>
+                <li><a href="#">购买与服务</a>
+                    <div>
+                        <p><a href="#">产品导购</a></p>
+                        <p><a href="#">产品购买</a></p>
+                        <p><a href="#">服务与支持</a></p>
+                        <p><a href="#">会员尊享</a></p>
+                    </div>
+                </li>
+                <li><a href="#"> 关于</a>
+                    <div>
+                        <p><a href="#">会员尊享</a></p>
+                        <p><a href="#">投资者关系</a></p>
+                        <p><a href="#">品牌资讯</a></p>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- 更多订单商品... -->
+        <div class="search">
+            <label>
+                <input type="text" placeholder="" class="a1">
+            </label>
+            <button class="a2"><a href="#">搜索</a></button>
+            <span class="a3"><% if (request.getAttribute("user") != null) { %>
+                <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+                        href="cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="order.jsp">订单</a></li>
+                <% } else { %>
+                <li><a href="login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="register.jsp">注册</a></li>
+                <% } %></span>
+        </div>
     </div>
-    <!-- 总金额 -->
-    <p>总金额：$40.00</p>
-    <!-- 收货地址信息 -->
-    <div class="delivery-address">
-        <h2>收货地址</h2>
-        <p>姓名：张三</p>
-        <p>电话：1234567890</p>
-        <p>地址：北京市朝阳区XXX街道</p>
-    </div>
-    <!-- 支付记录信息 -->
-    <div class="payment-record">
-        <h2>支付记录</h2>
-        <p>支付方式：支付宝</p>
-        <p>支付金额：$40.00</p>
-        <p>支付状态：已支付</p>
-        <p>支付时间：2023-01-01 12:00:00</p>
-    </div>
+</header>
+<div class="container content">
+    <h2>我的订单</h2>
 </div>
+<footer>
+    <div class="container">
+        <div class="footer">
+            <div class="w">
+                <div class="footer1">
+                    <h3>全球购</h3>
+                    <ul>
+                        <li><a href="#">全球购首页</a></li>
+                        <li><a href="#">相关资讯</a></li>
+                        <li><a href="#">中国体验店</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>国际产品</h3>
+                    <ul>
+                        <li><a href="#">服饰</a></li>
+                        <li><a href="#">奢侈品</a></li>
+                        <li><a href="#">代购门店</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>购买与服务</h3>
+                    <ul>
+                        <li><a href="#">产品导购</a></li>
+                        <li><a href="#">产品购买</a></li>
+                        <li><a href="#">服务与支持</a></li>
+                        <li><a href="#">会员尊享</a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>关于全球购</h3>
+                    <ul>
+                        <li><a href="#">海外品牌</a></li>
+                        <li><a href="#">投资者关系</a></li>
+                        <li><a href="#">相关资讯 </a></li>
+                    </ul>
+                </div>
+                <div class="footer1">
+                    <h3>售后服务</h3>
+                    <ul>
+                        <li><a href="#">客服</a></li>
+                        <li><a href="#">售后平台</a></li>
+                        <li><a href="#">售后维权</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

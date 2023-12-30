@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DeliveryAddressServiceImpl implements DeliveryAddressService {
-    private DeliveryAddressDao deliveryAddressDao;
+    private final DeliveryAddressDao deliveryAddressDao;
 
     public DeliveryAddressServiceImpl(DeliveryAddressDao deliveryAddressDao) {
         this.deliveryAddressDao = deliveryAddressDao;

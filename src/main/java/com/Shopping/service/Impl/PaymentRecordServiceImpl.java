@@ -7,7 +7,7 @@ import com.Shopping.service.PaymentRecordService;
 import java.util.List;
 
 public class PaymentRecordServiceImpl implements PaymentRecordService {
-    private PaymentRecordDao paymentRecordDao;
+    private final PaymentRecordDao paymentRecordDao;
 
     public PaymentRecordServiceImpl(PaymentRecordDao paymentRecordDao) {
         this.paymentRecordDao = paymentRecordDao;

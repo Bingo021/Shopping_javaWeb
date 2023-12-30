@@ -1,9 +1,9 @@
 <%@ page import="com.Shopping.model.User" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>我的购物车 - 网上购物系统</title>
+    <title>商品详情 - 网上购物系统</title>
     <link rel="shortcut icon" href="../images/favicon1.png"/>
     <link rel="stylesheet" type="text/css" href="../css/styles1.css">
 </head>
@@ -60,35 +60,8 @@
         </div>
     </div>
 </header>
-<div class="container1">
-    <h2>购物车</h2>
-    <!-- 购物车内容 -->
-    <div class="cart-item">
-        <img src="../images/woman-in-flower-blossoms.jpg" alt="婉约大方">
-        <h3>婉约大方</h3>
-        <p>$9999</p>
-        <div class="cart-actions">
-            <button class="cart-btn">-</button>
-            <span>1</span>
-            <button class="cart-btn">+</button>
-            <button class="cart-btn">删除</button>
-        </div>
-    </div>
-    <div class="cart-item">
-        <img src="../images/fashion-model-in-fur.jpg" alt="时尚潮流">
-        <h3>时尚潮流</h3>
-        <p>$9999</p>
-        <div class="cart-actions">
-            <button class="cart-btn">-</button>
-            <span>1</span>
-            <button class="cart-btn">+</button>
-            <button class="cart-btn">删除</button>
-        </div>
-    </div>
-    <div class="cart-actions">
-        <button class="cart-btn checkout-btn">结算</button>
-        <button class="cart-btn">清空购物车</button>
-    </div>
+<div class="container content">
+    <h2>商品详情</h2>
 </div>
 <footer>
     <div class="container">
@@ -141,3 +114,4 @@
 </footer>
 </body>
 </html>
+

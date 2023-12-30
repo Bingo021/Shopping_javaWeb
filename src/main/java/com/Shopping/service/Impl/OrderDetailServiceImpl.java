@@ -7,7 +7,7 @@ import com.Shopping.service.OrderDetailService;
 import java.util.List;
 
 public class OrderDetailServiceImpl implements OrderDetailService {
-    private OrderDetailDao orderDetailDao;
+    private final OrderDetailDao orderDetailDao;
 
     public OrderDetailServiceImpl(OrderDetailDao orderDetailDao) {
         this.orderDetailDao = orderDetailDao;

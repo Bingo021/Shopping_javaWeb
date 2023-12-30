@@ -1,3 +1,4 @@
+<%@ page import="com.Shopping.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -84,8 +85,13 @@
                 <input type="text" placeholder="" class="a1">
             </label>
             <button class="a2"><a href="#">搜索</a></button>
-            <span class="a3"><a href="views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                    href="views/register.jsp">注册</a></span>
+            <span class="a3"><% if (request.getAttribute("user") != null) { %>
+                <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+                        href="views/cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="views/order.jsp">订单</a></li>
+                <% } else { %>
+                <li><a href="views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="views/register.jsp">注册</a></li>
+                <% } %></span>
         </div>
     </div>
 </header>

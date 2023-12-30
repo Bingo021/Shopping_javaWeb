@@ -7,7 +7,7 @@ import com.Shopping.service.ProductService;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private ProductDao productDao;
+    private final ProductDao productDao;
 
     public ProductServiceImpl(ProductDao productDao) {
         this.productDao = productDao;

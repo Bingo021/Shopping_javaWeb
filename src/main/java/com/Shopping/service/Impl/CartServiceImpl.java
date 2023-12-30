@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CartServiceImpl implements CartService {
-    private CartDao cartDao;
+    private final CartDao cartDao;
 
     public CartServiceImpl(CartDao cartDao) {
         this.cartDao = cartDao;
