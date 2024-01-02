@@ -1,37 +1,29 @@
 package com.Shopping.service.Impl;
 
-import com.Shopping.dao.DeliveryAddressDao;
 import com.Shopping.model.DeliveryAddress;
 import com.Shopping.service.DeliveryAddressService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class DeliveryAddressServiceImpl implements DeliveryAddressService {
-    private final DeliveryAddressDao deliveryAddressDao;
-
-    public DeliveryAddressServiceImpl(DeliveryAddressDao deliveryAddressDao) {
-        this.deliveryAddressDao = deliveryAddressDao;
+    @Override
+    public DeliveryAddress addDeliveryAddress(int userId, String recipientName, String recipientPhone, String recipientAddress) {
+        return null;
     }
 
     @Override
-    public void addDeliveryAddress(DeliveryAddress deliveryAddress) {
-        deliveryAddressDao.addDeliveryAddress(deliveryAddress);
+    public List<DeliveryAddress> getDeliveryAddressesByUserId(int userId) {
+        return null;
     }
 
     @Override
-    public List<DeliveryAddress> getUserDeliveryAddresses(int userId) {
-        return deliveryAddressDao.getUserDeliveryAddresses(userId);
+    public void updateDeliveryAddress(int addressId, String newRecipientName, String newRecipientPhone, String newRecipientAddress) {
+
     }
 
     @Override
-    public void updateDeliveryAddress(DeliveryAddress deliveryAddress) throws SQLException {
-        deliveryAddressDao.updateDeliveryAddress(deliveryAddress);
-    }
+    public void deleteDeliveryAddress(int addressId) {
 
-    @Override
-    public void deleteDeliveryAddress(int deliveryAddressId) throws SQLException {
-        deliveryAddressDao.deleteDeliveryAddress(deliveryAddressId);
     }
 }
 

@@ -1,7 +1,6 @@
 package com.Shopping.dao.Impl;
 
 import com.Shopping.dao.UserDao;
-import com.Shopping.model.Product;
 import com.Shopping.model.User;
 
 import java.sql.*;

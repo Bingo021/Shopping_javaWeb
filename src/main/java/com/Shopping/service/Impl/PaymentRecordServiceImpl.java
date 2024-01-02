@@ -1,41 +1,25 @@
 package com.Shopping.service.Impl;
 
-import com.Shopping.dao.PaymentRecordDao;
 import com.Shopping.model.PaymentRecord;
 import com.Shopping.service.PaymentRecordService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class PaymentRecordServiceImpl implements PaymentRecordService {
-    private final PaymentRecordDao paymentRecordDao;
-
-    public PaymentRecordServiceImpl(PaymentRecordDao paymentRecordDao) {
-        this.paymentRecordDao = paymentRecordDao;
-    }
-
     @Override
-    public void addPaymentRecord(PaymentRecord paymentRecord) {
-        paymentRecordDao.addPaymentRecord(paymentRecord);
+    public PaymentRecord processPayment(int orderId, String paymentMethod, BigDecimal paymentAmount) {
+        return null;
     }
 
     @Override
     public PaymentRecord getPaymentRecordById(int paymentRecordId) {
-        return paymentRecordDao.getPaymentRecordById(paymentRecordId);
-    }
-
-    @Override
-    public List<PaymentRecord> getPaymentRecordsByOrderId(int orderId) {
-        return paymentRecordDao.getPaymentRecordsByOrderId(orderId);
+        return null;
     }
 
     @Override
     public List<PaymentRecord> getAllPaymentRecords() {
-        return paymentRecordDao.getAllPaymentRecords();
-    }
-
-    @Override
-    public void updatePaymentStatus(int paymentRecordId, String paymentStatus) {
-        paymentRecordDao.updatePaymentStatus(paymentRecordId, paymentStatus);
+        return null;
     }
 }
 

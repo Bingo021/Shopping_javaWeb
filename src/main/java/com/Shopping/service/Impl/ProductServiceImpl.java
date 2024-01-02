@@ -1,6 +1,5 @@
 package com.Shopping.service.Impl;
 
-import com.Shopping.dao.ProductDao;
 import com.Shopping.model.Product;
 import com.Shopping.service.ProductService;
 

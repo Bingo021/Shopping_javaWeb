@@ -2,16 +2,13 @@ package com.Shopping.service;
 
 import com.Shopping.model.PaymentRecord;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface PaymentRecordService {
-    void addPaymentRecord(PaymentRecord paymentRecord);
+    PaymentRecord processPayment(int orderId, String paymentMethod, BigDecimal paymentAmount);
 
     PaymentRecord getPaymentRecordById(int paymentRecordId);
 
-    List<PaymentRecord> getPaymentRecordsByOrderId(int orderId);
-
-    List<PaymentRecord> getAllPaymentRecords();
-
-    void updatePaymentStatus(int paymentRecordId, String paymentStatus);
+    List<PaymentRecord> getAllPaymentRecords(); // 获取所有支付记录（管理员视角）
 }

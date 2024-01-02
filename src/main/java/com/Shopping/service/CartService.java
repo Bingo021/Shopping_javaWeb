@@ -1,17 +1,17 @@
 package com.Shopping.service;
 
-import com.Shopping.model.Cart;
-
-import java.sql.SQLException;
-import java.util.List;
+import java.math.BigDecimal;
 
 public interface CartService {
-    void addToCart(int userId, int productId);
+    void addToCart(int userId, int productId, int quantity);
 
-    List<Cart> getUserCart(int userId) throws SQLException;
+    void removeFromCart(int userId, int productId);
 
-    void updateCartItemQuantity(int userId, int productId, int quantity) throws SQLException;
+    BigDecimal calculateCartTotal(int userId);
 
-    void removeFromCart(int userId, int productId) throws SQLException;
+    void clearCart(int userId);
+
+    // 从商品详细页面直接加入购物车
+    void addToCartFromProductPage(int userId, int productId, int quantity);
 }
 

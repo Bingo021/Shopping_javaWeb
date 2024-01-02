@@ -1,6 +1,5 @@
 package com.Shopping.service.Impl;
 
-import com.Shopping.dao.UserDao;
 import com.Shopping.model.User;
 import com.Shopping.service.UserService;
 

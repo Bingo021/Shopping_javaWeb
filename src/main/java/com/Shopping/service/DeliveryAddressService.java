@@ -2,15 +2,14 @@ package com.Shopping.service;
 
 import com.Shopping.model.DeliveryAddress;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface DeliveryAddressService {
-    void addDeliveryAddress(DeliveryAddress deliveryAddress);
+    DeliveryAddress addDeliveryAddress(int userId, String recipientName, String recipientPhone, String recipientAddress);
 
-    List<DeliveryAddress> getUserDeliveryAddresses(int userId);
+    List<DeliveryAddress> getDeliveryAddressesByUserId(int userId);
 
-    void updateDeliveryAddress(DeliveryAddress deliveryAddress) throws SQLException;
+    void updateDeliveryAddress(int addressId, String newRecipientName, String newRecipientPhone, String newRecipientAddress);
 
-    void deleteDeliveryAddress(int deliveryAddressId) throws SQLException;
+    void deleteDeliveryAddress(int addressId);
 }

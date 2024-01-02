@@ -1,37 +1,40 @@
 package com.Shopping.service.Impl;
 
-import com.Shopping.dao.OrderDao;
+import com.Shopping.model.DeliveryAddress;
 import com.Shopping.model.Order;
 import com.Shopping.service.OrderService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
-    private final OrderDao orderDao;
-
-    public OrderServiceImpl(OrderDao orderDao) {
-        this.orderDao = orderDao;
+    @Override
+    public Order placeOrderFromCart(int userId, DeliveryAddress deliveryAddress, String paymentMethod) {
+        return null;
     }
 
     @Override
-    public void addOrder(Order order) {
-        orderDao.addOrder(order);
+    public Order placeOrderFromProductPage(int userId, int productId, int quantity, DeliveryAddress deliveryAddress, String paymentMethod) {
+        return null;
     }
 
     @Override
-    public Order getOrderById(int orderId) throws SQLException {
-        return orderDao.getOrderById(orderId);
+    public Order getOrderById(int orderId) {
+        return null;
     }
 
     @Override
-    public List<Order> getUserOrders(int userId) throws SQLException {
-        return orderDao.getUserOrders(userId);
+    public List<Order> getOrdersByUserId(int userId) {
+        return null;
     }
 
     @Override
-    public void updateOrderStatus(int orderId, String orderStatus) {
-        orderDao.updateOrderStatus(orderId, orderStatus);
+    public List<Order> getAllOrders() {
+        return null;
+    }
+
+    @Override
+    public void updateOrderStatusByAdmin(int orderId, String newStatus) {
+
     }
 }
 
