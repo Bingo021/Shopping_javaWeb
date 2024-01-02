@@ -124,5 +124,33 @@ public class CartDaoImpl implements CartDao {
             }
         }
     }
+
+    @Override
+    public void clearCart(int userID) {
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM carts WHERE UserID = ?");
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                // 如果存在，则删除该产品
+                preparedStatement = connection.prepareStatement("DELETE FROM carts WHERE UserID = ?");
+                preparedStatement.setInt(1, userID);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 

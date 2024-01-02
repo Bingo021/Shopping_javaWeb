@@ -7,6 +7,15 @@ public class Order {
     private String orderStatus; // 例如：待支付、已支付等状态
     private java.sql.Timestamp createTime;
 
+
+    public Order(int userID, int productID) {
+        this.userID = userID;
+        this.productID = productID;
+    }
+
+    public Order() {
+    }
+
     public int getOrderID() {
         return orderID;
     }

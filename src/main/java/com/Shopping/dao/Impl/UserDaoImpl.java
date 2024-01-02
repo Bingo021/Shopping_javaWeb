@@ -57,6 +57,7 @@ public class UserDaoImpl implements UserDao {
                 user.setUsername(resultSet.getString("Username"));
                 user.setPassword(resultSet.getString("Password"));
                 user.setEmail(resultSet.getString("Email"));
+                user.setRole(resultSet.getInt("Role"));
                 user.setCreateTime(resultSet.getTimestamp("CreateTime"));
             }
         } catch (SQLException e) {
@@ -77,11 +78,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public User getUserById(int UserID) {
         User user = null;
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE Email = ?");
-            preparedStatement.setString(1, email);
+            preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE UserID = ?");
+            preparedStatement.setInt(1, UserID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 user = new User();
@@ -89,6 +90,7 @@ public class UserDaoImpl implements UserDao {
                 user.setUsername(resultSet.getString("Username"));
                 user.setPassword(resultSet.getString("Password"));
                 user.setEmail(resultSet.getString("Email"));
+                user.setRole(resultSet.getInt("Role"));
                 user.setCreateTime(resultSet.getTimestamp("CreateTime"));
             }
         } catch (SQLException e) {
@@ -111,11 +113,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         try {
-            preparedStatement = connection.prepareStatement("UPDATE users SET Username = ?, Password = ?, Email = ? WHERE UserID = ?");
+            preparedStatement = connection.prepareStatement("UPDATE users SET Username = ?, Password = ?, Email = ? ,Role =? WHERE UserID = ?");
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setInt(4, user.getUserID());
+            preparedStatement.setInt(4, user.getRole());
+            preparedStatement.setInt(5, user.getUserID());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,7 +159,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getUsersByRole(int role) {
+    public List<User> getUsersByRole() {
         List<User> users = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM users");

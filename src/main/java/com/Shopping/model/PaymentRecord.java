@@ -1,5 +1,7 @@
 package com.Shopping.model;
 
+import java.math.BigDecimal;
+
 public class PaymentRecord {
     private int paymentRecordID;
     private int orderID;
@@ -7,6 +9,16 @@ public class PaymentRecord {
     private double paymentAmount; // 定点数，用于存储支付金额，允许小数点后两位
     private String paymentStatus; // 支付状态，例如：待支付、已支付等
     private java.sql.Timestamp paymentTime;
+
+    public PaymentRecord() {
+
+    }
+
+    public PaymentRecord(int orderID, String paymentMethod, BigDecimal paymentAmount) {
+        this.orderID = orderID;
+        this.paymentMethod = paymentMethod;
+        this.paymentAmount = paymentAmount.doubleValue();
+    }
 
     public int getPaymentRecordID() {
         return paymentRecordID;

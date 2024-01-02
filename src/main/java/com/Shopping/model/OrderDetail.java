@@ -1,5 +1,7 @@
 package com.Shopping.model;
 
+import java.math.BigDecimal;
+
 public class OrderDetail {
     private int orderDetailID;
     private int orderID;
@@ -7,6 +9,17 @@ public class OrderDetail {
     private int quantity;
     private double price;
     private double totalPrice;
+
+    public OrderDetail(int orderID, int productID, int quantity, BigDecimal price) {
+        this.orderID = orderID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.price = price.doubleValue();
+    }
+
+    public OrderDetail() {
+
+    }
 
     public int getOrderDetailID() {
         return orderDetailID;

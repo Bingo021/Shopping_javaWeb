@@ -128,4 +128,37 @@ public class OrderDaoImpl implements OrderDao {
             }
         }
     }
+
+    @Override
+    public List<Order> getAllOrders() {
+        List<Order> orders = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM orders ");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Order order = new Order();
+                order.setOrderID(resultSet.getInt("OrderID"));
+                order.setUserID(resultSet.getInt("UserID"));
+                order.setProductID(resultSet.getInt("ProductID"));
+                order.setOrderStatus(resultSet.getString("OrderStatus"));
+                order.setCreateTime(resultSet.getTimestamp("CreateTime"));
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return orders;
+    }
 }
+

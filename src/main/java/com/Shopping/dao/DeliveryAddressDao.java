@@ -13,4 +13,6 @@ public interface DeliveryAddressDao {
     void updateDeliveryAddress(DeliveryAddress DeliveryAddress) throws SQLException;
 
     void deleteDeliveryAddress(int deliveryAddressID) throws SQLException;
+
+    DeliveryAddress getUserDeliveryAddress(int userId);
 }

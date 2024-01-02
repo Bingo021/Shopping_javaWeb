@@ -13,4 +13,6 @@ public interface OrderDao {
     List<Order> getUserOrders(int userID) throws SQLException;
 
     void updateOrderStatus(int orderID, String orderStatus);
+
+    List<Order> getAllOrders();
 }

@@ -116,4 +116,33 @@ public class DeliveryAddressDaoImpl implements DeliveryAddressDao {
             }
         }
     }
+
+    @Override
+    public DeliveryAddress getUserDeliveryAddress(int userID) {
+        DeliveryAddress deliveryAddress = null;
+        try {
+            preparedStatement = connection.prepareStatement("DELETE FROM deliveryaddresses WHERE UserID=?");
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                deliveryAddress = new DeliveryAddress();
+                deliveryAddress.setDeliveryAddressID(resultSet.getInt("DeliveryAddressID"));
+                deliveryAddress.setUserID(resultSet.getInt("UserID"));
+                deliveryAddress.setRecipientName(resultSet.getString("RecipientName"));
+                deliveryAddress.setRecipientPhone(resultSet.getString("RecipientPhone"));
+                deliveryAddress.setRecipientAddress(resultSet.getString("RecipientAddress"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return deliveryAddress;
+    }
 }

@@ -25,7 +25,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             preparedStatement = connection.prepareStatement("INSERT INTO products (ProductName, Price, Description) VALUES (?, ?, ?)");
             preparedStatement.setString(1, product.getProductName());
-            preparedStatement.setDouble(2, product.getPrice());
+            preparedStatement.setBigDecimal(2, product.getPrice());
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class ProductDaoImpl implements ProductDao {
                 product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
-                product.setPrice(resultSet.getDouble("Price"));
+                product.setPrice(resultSet.getBigDecimal("Price"));
                 product.setDescription(resultSet.getString("Description"));
             }
         } catch (SQLException e) {
@@ -85,7 +85,7 @@ public class ProductDaoImpl implements ProductDao {
                 Product product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
-                product.setPrice(resultSet.getInt("Price"));
+                product.setPrice(resultSet.getBigDecimal("Price"));
                 product.setDescription(resultSet.getString("Description"));
                 product.setCreateTime(resultSet.getTimestamp("CreateTime"));
                 products.add(product);
@@ -118,7 +118,7 @@ public class ProductDaoImpl implements ProductDao {
                 Product product = new Product();
                 product.setProductID(resultSet.getInt("ProductID"));
                 product.setProductName(resultSet.getString("ProductName"));
-                product.setPrice(resultSet.getInt("Price"));
+                product.setPrice(resultSet.getBigDecimal("Price"));
                 product.setDescription(resultSet.getString("Description"));
                 product.setCreateTime(resultSet.getTimestamp("CreateTime"));
                 products.add(product);
@@ -145,7 +145,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             preparedStatement = connection.prepareStatement("UPDATE products SET ProductName = ?, Price = ?, Description = ? WHERE ProductID = ?");
             preparedStatement.setString(1, product.getProductName());
-            preparedStatement.setDouble(2, product.getPrice());
+            preparedStatement.setBigDecimal(2, product.getPrice());
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.setInt(4, product.getProductID());
             preparedStatement.executeUpdate();

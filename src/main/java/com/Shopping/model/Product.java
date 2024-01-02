@@ -1,11 +1,23 @@
 package com.Shopping.model;
 
+import java.math.BigDecimal;
+
 public class Product {
     private int productID;
     private String productName;
-    private double price;
+    private BigDecimal price;
     private String description;
     private java.sql.Timestamp createTime;
+
+    public Product(String productName, BigDecimal price, String description) {
+        this.productName = productName;
+        this.price = price;
+        this.description = description;
+    }
+
+    public Product() {
+
+    }
 
     public int getProductID() {
         return productID;
@@ -23,11 +35,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

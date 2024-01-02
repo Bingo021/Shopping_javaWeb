@@ -9,11 +9,12 @@ public interface UserDao {
 
     User getUserByUsername(String username);
 
-    User getUserByEmail(String email);
+    User getUserById(int userID);
 
     void updateUser(User user);
 
     void deleteUser(int userID);
 
-    List<User> getUsersByRole(int role);
+    List<User> getUsersByRole();
+
 }
