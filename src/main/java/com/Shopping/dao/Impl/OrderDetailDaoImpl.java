@@ -14,6 +14,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
 
     public OrderDetailDaoImpl() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping_db", "zjh", "zjh");
         } catch (Exception e) {
             e.printStackTrace();

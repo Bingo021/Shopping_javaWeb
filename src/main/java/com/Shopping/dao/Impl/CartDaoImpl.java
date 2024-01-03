@@ -14,9 +14,11 @@ public class CartDaoImpl implements CartDao {
 
     public CartDaoImpl() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping_db", "zjh", "zjh");
-            preparedStatement = connection.prepareStatement("SELECT * FROM carts WHERE UserID = ?");
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

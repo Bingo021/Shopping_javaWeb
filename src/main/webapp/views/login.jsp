@@ -19,7 +19,7 @@
             <div class="login">我没有账号，去<a href="register.jsp">注册</a></div>
         </h3>
         <div class="reg_form">
-            <form action="ShoppingController" method="post">
+            <form action="../ShoppingController?action=login" method="post">
                 <ul>
                     <li><label for="">用户名：</label><input class="inp" name="username" required type="text"></li>
                     <li><label for="">密码：</label><input class="inp" name="password" required type="password"></li>

@@ -30,7 +30,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
-        return userDao.getUserByUsername(username);
+        if (userDao != null) {
+            return userDao.getUserByUsername(username);
+        } else {
+            return null;
+        }
     }
 
     @Override

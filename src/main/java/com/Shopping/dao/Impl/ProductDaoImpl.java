@@ -14,6 +14,7 @@ public class ProductDaoImpl implements ProductDao {
 
     public ProductDaoImpl() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping_db", "zjh", "zjh");
         } catch (Exception e) {
             e.printStackTrace();

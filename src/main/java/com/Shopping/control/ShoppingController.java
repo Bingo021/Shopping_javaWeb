@@ -61,14 +61,14 @@ public class ShoppingController extends HttpServlet {
 
             if (role == 0) {
                 // 普通用户登录
-                response.sendRedirect("/index.jsp");
+                response.sendRedirect("../index.jsp");
             } else if (role == 1) {
                 // 管理员登录
-                response.sendRedirect("/admin.jsp");
+                response.sendRedirect("../admin.jsp");
             }
         } else {
             request.setAttribute("loginError", "用户名或密码无效");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("../login.jsp").forward(request, response);
         }
     }
 
@@ -79,40 +79,32 @@ public class ShoppingController extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        // 调用UserService注册用户
         userService.createUser(username, password, email);
 
         // 重定向到登录页面
-        response.sendRedirect("/login");
+        response.sendRedirect("../login");
     }
 
     private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 获取商品ID
+
         int productId = Integer.parseInt(request.getParameter("productId"));
 
-        // 调用ProductService获取商品详情
         Product product = productService.getProductDetails(productId);
 
-        // 将商品详情放入request中
         request.setAttribute("product", product);
 
-        // 转发到商品详情页面
-        request.getRequestDispatcher("/product_details.jsp").forward(request, response);
+        request.getRequestDispatcher("../product_details.jsp").forward(request, response);
     }
 
     private void viewCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 获取用户ID
         int userId = Integer.parseInt(request.getParameter("userId"));
 
-        // 调用CartService获取购物车信息
         Cart cart = cartService.getCart(userId);
 
-        // 将购物车信息放入request中
         request.setAttribute("cart", cart);
 
-        // 转发到购物车页面
         request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }
 
