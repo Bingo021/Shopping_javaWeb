@@ -19,10 +19,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(String username, String password, String email) {
+    public User createUser(String username, String password, String email, int role) {
         String hashedPassword = hashPassword(password);
 
-        User newUser = new User(username, hashedPassword, email);
+        User newUser = new User(username, hashedPassword, email, role);
         userDao.addUser(newUser);
 
         return newUser;

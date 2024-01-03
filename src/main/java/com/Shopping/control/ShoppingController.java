@@ -42,8 +42,6 @@ public class ShoppingController extends HttpServlet {
             viewProductDetails(request, response);
         } else if ("viewCart".equals(action)) {
             viewCart(request, response);
-        } else if ("viewOrderDetails".equals(action)) {
-            viewOrderDetails(request, response);
         }
     }
 
@@ -51,24 +49,24 @@ public class ShoppingController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        int role = Integer.parseInt(request.getParameter("role"));
 
         User user = userService.getUserByUsername(username);
 
-        int role = 0;
         if (user != null && user.getRole() == role && userService.checkPassword(password, user.getPassword())) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
             if (role == 0) {
                 // 普通用户登录
-                response.sendRedirect("../index.jsp");
+                response.sendRedirect("/index.jsp");
             } else if (role == 1) {
                 // 管理员登录
-                response.sendRedirect("../admin.jsp");
+                response.sendRedirect("/views/admin.jsp");
             }
         } else {
             request.setAttribute("loginError", "用户名或密码无效");
-            request.getRequestDispatcher("../login.jsp").forward(request, response);
+            response.sendRedirect("/views/login.jsp");
         }
     }
 
@@ -78,8 +76,9 @@ public class ShoppingController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+        int role = Integer.parseInt(request.getParameter("role"));
 
-        userService.createUser(username, password, email);
+        userService.createUser(username, password, email, role);
 
         // 重定向到登录页面
         response.sendRedirect("../login");
@@ -94,7 +93,7 @@ public class ShoppingController extends HttpServlet {
 
         request.setAttribute("product", product);
 
-        request.getRequestDispatcher("../product_details.jsp").forward(request, response);
+        request.getRequestDispatcher("/product.jsp").forward(request, response);
     }
 
     private void viewCart(HttpServletRequest request, HttpServletResponse response)
@@ -141,20 +140,6 @@ public class ShoppingController extends HttpServlet {
         response.sendRedirect("/order/" + order.getOrderID());
     }
 
-    private void viewOrderDetails(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 获取订单ID
-        int orderId = Integer.parseInt(request.getParameter("orderId"));
-
-        // 调用OrderService获取订单详情
-        Order order = orderService.getOrderById(orderId);
-
-        // 将订单详情放入request中
-        request.setAttribute("order", order);
-
-        // 转发到订单详情页面
-        request.getRequestDispatcher("/order_details.jsp").forward(request, response);
-    }
 
     private void confirmReceipt(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

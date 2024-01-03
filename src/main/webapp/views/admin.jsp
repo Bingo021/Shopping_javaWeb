@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>管理员 - 网上购物系统</title>
-    <link rel="stylesheet" type="text/css" href="../css/admin_styles.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin_styles.css">
 </head>
 <body>
 <header>
@@ -14,9 +14,9 @@
 <nav>
     <div class="container">
         <ul>
-            <li><a href="admin_orders.jsp">订单管理</a></li>
-            <li><a href="admin_products.jsp">商品管理</a></li>
-            <li><a href="admin_users.jsp">用户管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/admin_orders.jsp">订单管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/admin_products.jsp">商品管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/admin_users.jsp">用户管理</a></li>
         </ul>
     </div>
 </nav>

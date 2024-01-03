@@ -4,28 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>登录 - 网上购物系统</title>
-    <link href="../images/favicon1.png" rel="shortcut icon"/>
-    <link href="../css/styles2.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon1.png"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles2.css">
 </head>
 <body>
 <div class="w">
     <header>
         <div class="logo">
-            <a href="../index.jsp"> <img alt="" src="../images/logo1.png"></a>
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img
+                    src="${pageContext.request.contextPath}/images/logo1.png" alt=""></a>
         </div>
     </header>
     <div class="registerarea">
         <h3>登录用户
-            <div class="login">我没有账号，去<a href="register.jsp">注册</a></div>
+            <div class="login">我没有账号，去<a href="${pageContext.request.contextPath}/views/register.jsp">注册</a>
+            </div>
         </h3>
         <div class="reg_form">
-            <form action="../ShoppingController?action=login" method="post">
+            <form action="/Shopping/ShoppingController?action=login" method="post">
                 <ul>
-                    <li><label for="">用户名：</label><input class="inp" name="username" required type="text"></li>
-                    <li><label for="">密码：</label><input class="inp" name="password" required type="password"></li>
-                    <li><label for="">登录类型：</label><select class="inp" name="role">
-                        <option value=0>用户</option>
-                        <option value=1>管理员</option>
+                    <li><label>用户名：</label><input class="inp" name="username" required type="text"></li>
+                    <li><label>密码：</label><input class="inp" name="password" required type="password"></li>
+                    <li><label>登录类型：</label><select class="inp" name="role">
+                        <option value="0">用户</option>
+                        <option value="1">管理员</option>
                     </select></li>
                     <li class="agree"><input id="" name="" type="checkbox">
                         记住密码并登录

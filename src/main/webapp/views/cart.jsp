@@ -4,18 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>我的购物车 - 网上购物系统</title>
-    <link rel="shortcut icon" href="../images/favicon1.png"/>
-    <link rel="stylesheet" type="text/css" href="../css/styles1.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon1.png"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css">
 </head>
 <body>
 <header>
     <div class="container">
         <div class="nav">
-            <a href="../index.jsp"><img src="../images/logo1.png"/></a>
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img
+                    src="${pageContext.request.contextPath}/images/logo1.png" alt=""></a>
             <ul>
                 <li><a href="#">首页</a>
                     <div>
-                        <p><a href="index.jsp">美妆个护</a></p>
+                        <p><a href="${pageContext.request.contextPath}/index.jsp">美妆个护</a></p>
                         <p><a href="#">食品保健</a></p>
                         <p><a href="#">母婴用品</a></p>
                         <p><a href="#">服饰鞋包</a></p>
@@ -52,10 +53,11 @@
             <button class="a2"><a href="#">搜索</a></button>
             <span class="a3"><% if (request.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                        href="cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="order.jsp">订单</a></li>
+                        href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="${pageContext.request.contextPath}/views/order.jsp">订单</a></li>
                 <% } else { %>
-                <li><a href="login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                        href="register.jsp">注册</a></li>
+                <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="${pageContext.request.contextPath}/views/register.jsp">注册</a></li>
                 <% } %></span>
         </div>
     </div>
@@ -64,7 +66,7 @@
     <h2>购物车</h2>
     <!-- 购物车内容 -->
     <div class="cart-item">
-        <img src="../images/woman-in-flower-blossoms.jpg" alt="婉约大方">
+        <img src="${pageContext.request.contextPath}/images/woman-in-flower-blossoms.jpg" alt="婉约大方">
         <h3>婉约大方</h3>
         <p>$9999</p>
         <div class="cart-actions">
@@ -75,7 +77,7 @@
         </div>
     </div>
     <div class="cart-item">
-        <img src="../images/fashion-model-in-fur.jpg" alt="时尚潮流">
+        <img src="${pageContext.request.contextPath}/images/fashion-model-in-fur.jpg" alt="时尚潮流">
         <h3>时尚潮流</h3>
         <p>$9999</p>
         <div class="cart-actions">

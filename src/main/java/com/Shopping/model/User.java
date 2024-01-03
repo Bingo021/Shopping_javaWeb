@@ -5,16 +5,18 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private int Role;
+    private int role;
     private java.sql.Timestamp createTime;
 
-    public User() {
+    public User(String username, String hashedPassword, String email, int role) {
+        this.username = username;
+        this.password = hashedPassword;
+        this.email = email;
+        this.role = role;
     }
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public User() {
+
     }
 
     public int getUserID() {
@@ -50,11 +52,11 @@ public class User {
     }
 
     public int getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(int role) {
-        Role = role;
+        role = role;
     }
 
     public java.sql.Timestamp getCreateTime() {

@@ -5,7 +5,7 @@ import com.Shopping.model.User;
 import java.util.List;
 
 public interface UserService {
-    User createUser(String username, String password, String email); // 创建用户账户
+    User createUser(String username, String password, String email, int role); // 创建用户账户
 
     User getUserByUsername(String username); // 获取用户信息
 

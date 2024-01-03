@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <title>网上购物系统</title>
     <meta name="keywords" content="全球购，海外购">
-    <link rel="shortcut icon" href="images/favicon1.png"/>
-    <link rel="stylesheet" type="text/css" href="css/styles1.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon1.png"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var index = 0;
@@ -46,11 +46,12 @@
 <header>
     <div class="container">
         <div class="nav">
-            <a href="index.jsp"><img src="images/logo1.png"/></a>
+            <a href="${pageContext.request.contextPath}/index.jsp"> <img
+                    src="${pageContext.request.contextPath}/images/logo1.png" alt=""></a>
             <ul>
                 <li><a href="#">首页</a>
                     <div>
-                        <p><a href="index.jsp">美妆个护</a></p>
+                        <p><a href="${pageContext.request.contextPath}/index.jsp">美妆个护</a></p>
                         <p><a href="#">食品保健</a></p>
                         <p><a href="#">母婴用品</a></p>
                         <p><a href="#">服饰鞋包</a></p>
@@ -87,19 +88,20 @@
             <button class="a2"><a href="#">搜索</a></button>
             <span class="a3"><% if (request.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                        href="views/cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="views/order.jsp">订单</a></li>
+                        href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="${pageContext.request.contextPath}/views/order.jsp">订单</a></li>
                 <% } else { %>
-                <li><a href="views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                        href="views/register.jsp">注册</a></li>
+                <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        href="${pageContext.request.contextPath}/views/register.jsp">注册</a></li>
                 <% } %></span>
         </div>
     </div>
 </header>
 <nav class="banner">
     <ul>
-        <li><img src="images/woman-in-fur-under-neon.jpg" alt=""></li>
-        <li><img src="images/blank-colored-t-shirts.jpg" alt=""></li>
-        <li><img src="images/t-shirt-store.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/woman-in-fur-under-neon.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/blank-colored-t-shirts.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/t-shirt-store.jpg" alt=""></li>
     </ul>
     <div class="btn">
         <span></span>
@@ -121,32 +123,32 @@
     </div>
     <div class="content_box">
         <div class="content_box_1">
-            <img src="images/woman-in-flower-blossoms.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/woman-in-flower-blossoms.jpg" alt="">
             <h3>婉约大方</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="images/fashion-model-in-fur.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/fashion-model-in-fur.jpg" alt="">
             <h3>时尚潮流</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="images/model-in-gold-fashion.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/model-in-gold-fashion.jpg" alt="">
             <h3>职场个性</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="images/happy-woman.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/happy-woman.jpg" alt="">
             <h3>阳光活泼</h3>
             <p>$4999</p>
         </div>
         <div class="content_box_1">
-            <img src="images/young-woman-posing-at-carnival.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/young-woman-posing-at-carnival.jpg" alt="">
             <h3>温柔气质</h3>
             <p>$6999</p>
         </div>
         <div class="content_box_1">
-            <img src="images/woman-in-summer-fashion.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/woman-in-summer-fashion.jpg" alt="">
             <h3>朋克牛仔</h3>
             <p>$5999</p>
         </div>
@@ -155,13 +157,13 @@
 <div class="link">
     <h1>品牌链接</h1>
     <ul>
-        <li><a href="#"><img src="images/CHANEL.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/GUCCI.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/LV.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/CELINE.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/Cartier.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/Dior.jpg" alt=""></a></li>
-        <li><a href="#"><img src="images/Salvatore.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/CHANEL.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/GUCCI.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/LV.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/CELINE.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/Cartier.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/Dior.jpg" alt=""></a></li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}/images/Salvatore.jpg" alt=""></a></li>
     </ul>
 </div>
 <div class="footer">
