@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon1.png"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css">
 </head>
-<body>
 <header>
     <div class="container">
         <div class="nav">
@@ -67,30 +66,59 @@
         </div>
     </div>
 </header>
-<div class="container1">
-    <h2>购物车</h2>
-    <!-- 购物车内容 -->
+<body>
+<div class="cart-section">
     <c:if test="${empty cartList}">
         <p>您的购物车为空，去逛逛看吧！</p>
     </c:if>
-    <c:forEach var="cart" items="${cartList}">
-        <div class="cart-item">
-            <img src="<c:url value='/images/${cart.productID}'/>" alt="${cart.cartProduct.productName}">
-            <h3>${cart.cartProduct.productName}</h3>
-            <p>${cart.cartProduct.price}</p>
-            <div class="cart-actions">
-                <button class="cart-btn">-</button>
-                <span>${cart.quantity}</span>
-                <button class="cart-btn">+</button>
-                <button class="cart-btn">删除</button>
-            </div>
-        </div>
-    </c:forEach>
+    <table>
+        <thead>
+        <tr>
+            <th>商品名称</th>
+            <th>金额</th>
+            <th>数量</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="cart" items="${cartList}">
+            <tr class="cart-item">
+                <td class="cart-details">
+                    <p>${cart.cartProduct.productName}</p>
+                </td>
+                <td class="cart-details">
+                    <p>${cart.cartProduct.price * cart.quantity}</p>
+                </td>
+                <td class="cart-actions">
+                    <form action="Shopping?action=updateCartItem" method="post">
+                        <input type="hidden" name="productId" value="${cart.cartProduct.productID}">
+                        <button class="cart-btn" type="submit" name="action" value="decrease">-</button>
+                    </form>
+                    <span>${cart.quantity}</span>
+                    <form action="Shopping?action=updateCartItem" method="post">
+                        <input type="hidden" name="productId" value="${cart.cartProduct.productID}">
+                        <button class="cart-btn" type="submit" name="action" value="increase">+</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="Shopping?action=updateCartItem" method="post">
+                        <input type="hidden" name="productId" value="${cart.cartProduct.productID}">
+                        <button class="cart-btn" type="submit" name="action" value="remove">删除</button>
+                    </form>
+                    <form action="Shopping?action=updateCartItem" method="post">
+                        <input type="hidden" name="productId" value="${cart.cartProduct.productID}">
+                        <button class="cart-btn" type="submit" name="action" value="remove">下单</button>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
     <div class="cart-actions">
-        <button class="cart-btn checkout-btn">结算</button>
         <button class="cart-btn">清空购物车</button>
     </div>
 </div>
+</body>
 <footer>
     <div class="container">
         <div class="footer">
@@ -140,5 +168,4 @@
         </div>
     </div>
 </footer>
-</body>
 </html>

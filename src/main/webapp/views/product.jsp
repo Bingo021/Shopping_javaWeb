@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon1.png"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css">
 </head>
-<body>
 <header>
     <div class="container">
         <div class="nav">
@@ -66,9 +65,11 @@
         </div>
     </div>
 </header>
+<body>
 <div class="container content">
     <h2>商品详情</h2>
 </div>
+</body>
 <footer>
     <div class="container">
         <div class="footer">
@@ -118,6 +119,5 @@
         </div>
     </div>
 </footer>
-</body>
 </html>
 

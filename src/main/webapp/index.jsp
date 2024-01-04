@@ -43,7 +43,6 @@
         });
     </script>
 </head>
-<body>
 <header>
     <div class="container">
         <div class="nav">
@@ -93,7 +92,7 @@
                     if (session.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) session.getAttribute("user")).getUsername() %></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="Shopping?action=viewCart&userId=${user.userID}">我的购物车</a>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/order.jsp">订单</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="Shopping?action=viewOrder&userId=${user.userID}">订单</a>
                 </li>
                 <% } else { %>
                 <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>
@@ -104,6 +103,7 @@
         </div>
     </div>
 </header>
+<body>
 <nav class="banner">
     <ul>
         <li><img src="${pageContext.request.contextPath}/images/index1.jpg" alt=""></li>
@@ -173,50 +173,52 @@
         <li><a href="#"><img src="${pageContext.request.contextPath}/images/Salvatore.jpg" alt=""></a></li>
     </ul>
 </div>
-<div class="footer">
-    <div class="w">
-        <div class="footer1">
-            <h3>全球购</h3>
-            <ul>
-                <li><a href="#">全球购首页</a></li>
-                <li><a href="#">相关资讯</a></li>
-                <li><a href="#">中国体验店</a></li>
-            </ul>
-        </div>
-        <div class="footer1">
-            <h3>国际产品</h3>
-            <ul>
-                <li><a href="#">服饰</a></li>
-                <li><a href="#">奢侈品</a></li>
-                <li><a href="#">代购门店</a></li>
-            </ul>
-        </div>
-        <div class="footer1">
-            <h3>购买与服务</h3>
-            <ul>
-                <li><a href="#">产品导购</a></li>
-                <li><a href="#">产品购买</a></li>
-                <li><a href="#">服务与支持</a></li>
-                <li><a href="#">会员尊享</a></li>
-            </ul>
-        </div>
-        <div class="footer1">
-            <h3>关于全球购</h3>
-            <ul>
-                <li><a href="#">海外品牌</a></li>
-                <li><a href="#">投资者关系</a></li>
-                <li><a href="#">相关资讯 </a></li>
-            </ul>
-        </div>
-        <div class="footer1">
-            <h3>售后服务</h3>
-            <ul>
-                <li><a href="#">客服</a></li>
-                <li><a href="#">售后平台</a></li>
-                <li><a href="#">售后维权</a></li>
-            </ul>
+</body>
+<footer>
+    <div class="footer">
+        <div class="w">
+            <div class="footer1">
+                <h3>全球购</h3>
+                <ul>
+                    <li><a href="#">全球购首页</a></li>
+                    <li><a href="#">相关资讯</a></li>
+                    <li><a href="#">中国体验店</a></li>
+                </ul>
+            </div>
+            <div class="footer1">
+                <h3>国际产品</h3>
+                <ul>
+                    <li><a href="#">服饰</a></li>
+                    <li><a href="#">奢侈品</a></li>
+                    <li><a href="#">代购门店</a></li>
+                </ul>
+            </div>
+            <div class="footer1">
+                <h3>购买与服务</h3>
+                <ul>
+                    <li><a href="#">产品导购</a></li>
+                    <li><a href="#">产品购买</a></li>
+                    <li><a href="#">服务与支持</a></li>
+                    <li><a href="#">会员尊享</a></li>
+                </ul>
+            </div>
+            <div class="footer1">
+                <h3>关于全球购</h3>
+                <ul>
+                    <li><a href="#">海外品牌</a></li>
+                    <li><a href="#">投资者关系</a></li>
+                    <li><a href="#">相关资讯 </a></li>
+                </ul>
+            </div>
+            <div class="footer1">
+                <h3>售后服务</h3>
+                <ul>
+                    <li><a href="#">客服</a></li>
+                    <li><a href="#">售后平台</a></li>
+                    <li><a href="#">售后维权</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-</body>
+</footer>
 </html>

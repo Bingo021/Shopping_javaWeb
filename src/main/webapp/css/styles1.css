@@ -282,53 +282,6 @@ nav .btn span:hover {
     text-decoration: underline;
 }
 
-.container1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cart-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 15px;
-    text-align: center;
-    max-width: 200px;
-}
-
-.cart-item img {
-    max-width: 100%;
-    max-height: 150px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.cart-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px;
-    align-items: center; /* 新增：垂直居中对齐 */
-}
-
-.cart-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.checkout-btn {
-    background-color: #2196F3;
-}
-
 .order-section {
     border: 1px solid #ddd;
     padding: 20px;
@@ -374,5 +327,34 @@ nav .btn span:hover {
 }
 
 .order-actions button:hover {
+    background-color: #1c6da8;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-details p {
+    margin: 0;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+}
+
+.cart-actions button {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-actions button:hover {
     background-color: #1c6da8;
 }

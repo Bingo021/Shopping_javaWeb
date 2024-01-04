@@ -33,6 +33,12 @@ public class ShoppingController extends HttpServlet {
             registerUser(request, response);
         } else if ("login".equals(action)) {
             loginUser(request, response);
+        } else if ("decrease".equals(action)) {
+            decreaseCartItemQuantity(request, response);
+        } else if ("increase".equals(action)) {
+            increaseCartItemQuantity(request, response);
+        } else if ("remove".equals(action)) {
+            removeCartItem(request, response);
         }
     }
 
@@ -44,6 +50,8 @@ public class ShoppingController extends HttpServlet {
             viewProductDetails(request, response);
         } else if ("viewCart".equals(action)) {
             viewCart(request, response);
+        } else if ("viewOrder".equals(action)) {
+            viewOrder(request, response);
         }
     }
 
@@ -87,16 +95,32 @@ public class ShoppingController extends HttpServlet {
         response.sendRedirect("views/login.jsp");
     }
 
-    private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
+    public void decreaseCartItemQuantity (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        // 具体的购物车数量减少逻辑
+    }
+
+    public void increaseCartItemQuantity (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        // 具体的购物车数量增加逻辑
+    }
+
+    public void removeCartItem (HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        // 具体的购物车删除商品逻辑
+    }
+
+    private void viewOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getUserID();
 
-        int productId = Integer.parseInt(request.getParameter("productId"));
+        List<Order> userOrders = orderService.getOrdersByUserId(userId);
 
-        Product product = productService.getProductDetails(productId);
+        request.setAttribute("userOrders", userOrders);
 
-        request.setAttribute("product", product);
-
-        request.getRequestDispatcher("views/product.jsp").forward(request, response);
+        request.getRequestDispatcher("views/order.jsp").forward(request, response);
     }
 
     private void viewCart(HttpServletRequest request, HttpServletResponse response)
@@ -112,7 +136,17 @@ public class ShoppingController extends HttpServlet {
         request.setAttribute("cartList", cart);
         request.getRequestDispatcher("views/cart.jsp").forward(request, response);
     }
+    private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+        int productId = Integer.parseInt(request.getParameter("productId"));
+
+        Product product = productService.getProductDetails(productId);
+
+        request.setAttribute("product", product);
+
+        request.getRequestDispatcher("views/product.jsp").forward(request, response);
+    }
     private void placeOrderFromCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // 获取用户ID、购物车ID、收货地址ID、支付方式等信息
