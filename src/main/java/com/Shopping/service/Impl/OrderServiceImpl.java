@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order placeOrderFromCart(int userId, int cartId) {
-        Cart cart = cartService.getCart(userId);
+        Cart cart = cartService.getCartbyCartId(cartId);
         Order order = new Order(userId, cart.getProductID());
         orderDao.addOrder(order);
 
@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         OrderDetail orderDetail = new OrderDetail(order.getOrderID(), product.getProductID(), cart.getQuantity(), product.getPrice());
         orderDetailDao.addOrderDetail(orderDetail);
 
-        cartService.removeFromCart(userId, cart.getProductID());
+        cartService.removeFromCart(userId, cart.getCartID());
 
         return order;
     }

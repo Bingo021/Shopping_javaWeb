@@ -10,6 +10,8 @@ public interface CartDao {
 
     List<Cart> getUserCart(int userID) throws SQLException;
 
+    Cart getCart(int cartID) throws SQLException;
+
     void updateCartItemQuantity(int userID, int productID, int quantity) throws SQLException;
 
     void removeFromCart(int userID, int productID) throws SQLException;

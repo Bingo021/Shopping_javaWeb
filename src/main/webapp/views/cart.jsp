@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.Shopping.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -69,28 +70,22 @@
 <div class="container1">
     <h2>购物车</h2>
     <!-- 购物车内容 -->
-    <div class="cart-item">
-        <img src="${pageContext.request.contextPath}/images/woman-in-flower-blossoms.jpg" alt="婉约大方">
-        <h3>婉约大方</h3>
-        <p>$9999</p>
-        <div class="cart-actions">
-            <button class="cart-btn">-</button>
-            <span>1</span>
-            <button class="cart-btn">+</button>
-            <button class="cart-btn">删除</button>
+    <c:if test="${empty cartList}">
+        <p>您的购物车为空，去逛逛看吧！</p>
+    </c:if>
+    <c:forEach var="cart" items="${cartList}">
+        <div class="cart-item">
+            <img src="<c:url value='/images/${cart.productID}'/>" alt="${cart.cartProduct.productName}">
+            <h3>${cart.cartProduct.productName}</h3>
+            <p>${cart.cartProduct.price}</p>
+            <div class="cart-actions">
+                <button class="cart-btn">-</button>
+                <span>${cart.quantity}</span>
+                <button class="cart-btn">+</button>
+                <button class="cart-btn">删除</button>
+            </div>
         </div>
-    </div>
-    <div class="cart-item">
-        <img src="${pageContext.request.contextPath}/images/fashion-model-in-fur.jpg" alt="时尚潮流">
-        <h3>时尚潮流</h3>
-        <p>$9999</p>
-        <div class="cart-actions">
-            <button class="cart-btn">-</button>
-            <span>1</span>
-            <button class="cart-btn">+</button>
-            <button class="cart-btn">删除</button>
-        </div>
-    </div>
+    </c:forEach>
     <div class="cart-actions">
         <button class="cart-btn checkout-btn">结算</button>
         <button class="cart-btn">清空购物车</button>

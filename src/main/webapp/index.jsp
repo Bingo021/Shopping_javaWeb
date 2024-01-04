@@ -89,11 +89,10 @@
             <button class="a2"><a href="#">搜索</a></button>
             <span class="a3">
                 <%
-                    System.out.println("---------------");
                     System.out.println(session.getAttribute("user"));
                     if (session.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) session.getAttribute("user")).getUsername() %></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="Shopping?action=viewCart&userId=${user.userID}">我的购物车</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/order.jsp">订单</a>
                 </li>
                 <% } else { %>
@@ -107,9 +106,9 @@
 </header>
 <nav class="banner">
     <ul>
-        <li><img src="${pageContext.request.contextPath}/images/woman-in-fur-under-neon.jpg" alt=""></li>
-        <li><img src="${pageContext.request.contextPath}/images/blank-colored-t-shirts.jpg" alt=""></li>
-        <li><img src="${pageContext.request.contextPath}/images/t-shirt-store.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/index1.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/index2.jpg" alt=""></li>
+        <li><img src="${pageContext.request.contextPath}/images/index3.jpg" alt=""></li>
     </ul>
     <div class="btn">
         <span></span>
@@ -131,32 +130,32 @@
     </div>
     <div class="content_box">
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/woman-in-flower-blossoms.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/1.jpg" alt="">
             <h3>婉约大方</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/fashion-model-in-fur.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/2.jpg" alt="">
             <h3>时尚潮流</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/model-in-gold-fashion.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/3.jpg" alt="">
             <h3>职场个性</h3>
             <p>$9999</p>
         </div>
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/happy-woman.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/4.jpg" alt="">
             <h3>阳光活泼</h3>
             <p>$4999</p>
         </div>
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/young-woman-posing-at-carnival.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/5.jpg" alt="">
             <h3>温柔气质</h3>
             <p>$6999</p>
         </div>
         <div class="content_box_1">
-            <img src="${pageContext.request.contextPath}/images/woman-in-summer-fashion.jpg" alt="">
+            <img src="${pageContext.request.contextPath}/images/6.jpg" alt="">
             <h3>朋克牛仔</h3>
             <p>$5999</p>
         </div>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/Shopping")
@@ -38,7 +39,7 @@ public class ShoppingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-
+        System.out.println("Doget action="+action );
         if ("viewProductDetails".equals(action)) {
             viewProductDetails(request, response);
         } else if ("viewCart".equals(action)) {
@@ -50,13 +51,9 @@ public class ShoppingController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println("role="+request.getParameter("role"));
-        System.out.println("username="+request.getParameter("username"));
         int role = Integer.parseInt(request.getParameter("role"));
 
         User user = userService.getUserByUsername(username);
-        System.out.println("user="+user);
-
 
         if (user != null && user.getRole() == role && (password.equals(user.getPassword()))) {
             HttpSession session = request.getSession();
@@ -64,11 +61,11 @@ public class ShoppingController extends HttpServlet {
 
             if (role == 0) {
                 // 普通用户登录
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect("index.jsp");
             } else if (role == 1) {
                 // 管理员登录
                 System.out.println("验证管理员");
-                response.sendRedirect(request.getContextPath() + "/views/admin.jsp");
+                response.sendRedirect( "views/admin.jsp");
             }
         }
         else
@@ -81,17 +78,13 @@ public class ShoppingController extends HttpServlet {
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 获取注册信息
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        int role = request.getParameter("role") != null ? Integer.parseInt(request.getParameter("role")) : 0;
-        System.out.println("Role parameter: " + request.getParameter("role"));
 
-        userService.createUser(username, password, email, role);
+        userService.createUser(username, password, email);
 
-        // 重定向到登录页面
-        response.sendRedirect(request.getContextPath() + "/views/login.jsp");
+        response.sendRedirect("views/login.jsp");
     }
 
     private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
@@ -103,18 +96,21 @@ public class ShoppingController extends HttpServlet {
 
         request.setAttribute("product", product);
 
-        request.getRequestDispatcher("/product.jsp").forward(request, response);
+        request.getRequestDispatcher("views/product.jsp").forward(request, response);
     }
 
     private void viewCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int userId = Integer.parseInt(request.getParameter("userId"));
+        List<Cart> cart = null;
+        try {
+            cart = cartService.getCart(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        Cart cart = cartService.getCart(userId);
-
-        request.setAttribute("cart", cart);
-
-        request.getRequestDispatcher("/cart.jsp").forward(request, response);
+        request.setAttribute("cartList", cart);
+        request.getRequestDispatcher("views/cart.jsp").forward(request, response);
     }
 
     private void placeOrderFromCart(HttpServletRequest request, HttpServletResponse response)

@@ -4,7 +4,6 @@ import com.Shopping.dao.Impl.UserDaoImpl;
 import com.Shopping.dao.UserDao;
 import com.Shopping.model.User;
 import com.Shopping.service.UserService;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(String username, String password, String email, int role) {
-        User newUser = new User(username, password, email, role);
+    public User createUser(String username, String password, String email) {
+        User newUser = new User(username, password, email);
         userDao.addUser(newUser);
 
         return newUser;
@@ -33,14 +32,12 @@ public class UserServiceImpl implements UserService {
         User existingUser = userDao.getUserById(userId);
 
         if (existingUser != null) {
-            // 更新用户信息，确保新的用户名和邮箱不为空
             existingUser.setUsername(newUsername != null ? newUsername : existingUser.getUsername());
             existingUser.setEmail(newEmail != null ? newEmail : existingUser.getEmail());
 
             if (newPassword != null) {
                 existingUser.setPassword(newPassword);
             }
-
             userDao.updateUser(existingUser);
         }
     }

@@ -8,11 +8,10 @@ public class User {
     private int role;
     private java.sql.Timestamp createTime;
 
-    public User(String username, String hashedPassword, String email, int role) {
+    public User(String username, String hashedPassword, String email) {
         this.username = username;
         this.password = hashedPassword;
         this.email = email;
-        this.role = role;
     }
 
     public User() {

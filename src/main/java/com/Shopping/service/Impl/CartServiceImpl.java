@@ -18,12 +18,21 @@ public class CartServiceImpl implements CartService {
 
     }
     @Override
-    public Cart getCart(int userId) {
+    public List<Cart> getCart(int userId) {
+
+        List<Cart> userCarts = null;
         try {
-            List<Cart> userCarts = cartDao.getUserCart(userId);
-            if (!userCarts.isEmpty()) {
-                return userCarts.get(0);
-            }
+            userCarts = cartDao.getUserCart(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userCarts;
+    }
+
+    @Override
+    public Cart getCartbyCartId(int cartId) {
+        try {
+            return cartDao.getCart(cartId);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package com.Shopping.dao.Impl;
 
 import com.Shopping.dao.CartDao;
 import com.Shopping.model.Cart;
+import com.Shopping.model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -47,13 +48,22 @@ public class CartDaoImpl implements CartDao {
     public List<Cart> getUserCart(int userID) throws SQLException {
         List<Cart> cartList = new ArrayList<>();
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM carts WHERE UserID = ?");
+            preparedStatement = connection.prepareStatement("select a.CartID, a.UserID, a.ProductID, a.Quantity, a.CreateTime, b.ProductName,b.Price from carts a left join products b on a.ProductID = b.ProductID WHERE a.UserID = ?");
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Cart cart = new Cart();
                 cart.setProductID(resultSet.getInt("ProductId"));
                 cart.setQuantity(resultSet.getInt("Quantity"));
+
+                Product product = new Product();
+
+                System.out.println("ProductName="+resultSet.getString("ProductName"));
+                product.setProductName(resultSet.getString("ProductName"));
+
+
+                product.setPrice(resultSet.getBigDecimal("Price"));
+                cart.setCartProduct(product);
                 cartList.add(cart);
             }
         } catch (SQLException e) {
@@ -71,6 +81,36 @@ public class CartDaoImpl implements CartDao {
             }
         }
         return cartList;
+    }
+
+    @Override
+    public Cart getCart(int cartID) throws SQLException {
+        Cart cart = null;
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM carts WHERE CartID = ?");
+            preparedStatement.setInt(1, cartID);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                cart = new Cart();
+                cart.getUserID(resultSet.getInt("UserId"));
+                cart.setProductID(resultSet.getInt("ProductId"));
+                cart.setQuantity(resultSet.getInt("Quantity"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return cart;
     }
 
     @Override
