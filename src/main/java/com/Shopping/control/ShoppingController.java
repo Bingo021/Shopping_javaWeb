@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-@WebServlet("/ShoppingController")
+@WebServlet("/Shopping")
 public class ShoppingController extends HttpServlet {
     private final UserService userService = new UserServiceImpl();
     private final ProductService productService = new ProductServiceImpl();
@@ -26,6 +26,7 @@ public class ShoppingController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        System.out.println("action="+action);
 
         if ("register".equals(action)) {
             registerUser(request, response);
@@ -49,24 +50,32 @@ public class ShoppingController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        System.out.println("role="+request.getParameter("role"));
+        System.out.println("username="+request.getParameter("username"));
         int role = Integer.parseInt(request.getParameter("role"));
 
         User user = userService.getUserByUsername(username);
+        System.out.println("user="+user);
 
-        if (user != null && user.getRole() == role && userService.checkPassword(password, user.getPassword())) {
+
+        if (user != null && user.getRole() == role && (password.equals(user.getPassword()))) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
             if (role == 0) {
                 // 普通用户登录
-                response.sendRedirect("/index.jsp");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             } else if (role == 1) {
                 // 管理员登录
-                response.sendRedirect("/views/admin.jsp");
+                System.out.println("验证管理员");
+                response.sendRedirect(request.getContextPath() + "/views/admin.jsp");
             }
-        } else {
+        }
+        else
+        {
+            System.out.println("用户名密码无效");
             request.setAttribute("loginError", "用户名或密码无效");
-            response.sendRedirect("/views/login.jsp");
+            response.sendRedirect("views/login.jsp");
         }
     }
 
@@ -76,12 +85,13 @@ public class ShoppingController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        int role = Integer.parseInt(request.getParameter("role"));
+        int role = request.getParameter("role") != null ? Integer.parseInt(request.getParameter("role")) : 0;
+        System.out.println("Role parameter: " + request.getParameter("role"));
 
         userService.createUser(username, password, email, role);
 
         // 重定向到登录页面
-        response.sendRedirect("../login");
+        response.sendRedirect(request.getContextPath() + "/views/login.jsp");
     }
 
     private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)

@@ -20,7 +20,7 @@
             <div class="login">我有账号，去<a href="${pageContext.request.contextPath}/views/login.jsp">登陆</a></div>
         </h3>
         <div class="reg_form">
-            <form action="/Shopping/ShoppingController?action=register" method="post">
+            <form action="/Shopping?action=register" method="post">
                 <ul>
                     <li><label>用户名：</label> <input type="text" required class="inp"></li>
                     <li><label>Email：</label> <input type="text" required class="inp"></li>

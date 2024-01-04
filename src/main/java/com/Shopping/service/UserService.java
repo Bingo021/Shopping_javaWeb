@@ -9,8 +9,6 @@ public interface UserService {
 
     User getUserByUsername(String username); // 获取用户信息
 
-    boolean checkPassword(String enteredPassword, String storedHashedPassword);
-
     void updateUser(int userId, String newUsername, String newEmail, String newPassword); // 更新用户信息
 
     void deleteUser(int userId); // 删除用户

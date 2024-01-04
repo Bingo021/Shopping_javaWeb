@@ -1,5 +1,6 @@
 <%@ page import="com.Shopping.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,14 +87,21 @@
                 <input type="text" placeholder="" class="a1">
             </label>
             <button class="a2"><a href="#">搜索</a></button>
-            <span class="a3"><% if (request.getAttribute("user") != null) { %>
-                <li><a href="#">欢迎，<%= ((User) request.getAttribute("user")).getUsername() %></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                        href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                        href="${pageContext.request.contextPath}/views/order.jsp">订单</a></li>
+            <span class="a3">
+                <%
+                    System.out.println("---------------");
+                    System.out.println(session.getAttribute("user"));
+                    if (session.getAttribute("user") != null) { %>
+                <li><a href="#">欢迎，<%= ((User) session.getAttribute("user")).getUsername() %></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/order.jsp">订单</a>
+                </li>
                 <% } else { %>
-                <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                        href="${pageContext.request.contextPath}/views/register.jsp">注册</a></li>
-                <% } %></span>
+                <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/register.jsp">注册</a>
+                </li>
+                <% } %>
+            </span>
         </div>
     </div>
 </header>

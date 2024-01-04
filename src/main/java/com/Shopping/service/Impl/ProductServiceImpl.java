@@ -1,5 +1,6 @@
 package com.Shopping.service.Impl;
 
+import com.Shopping.dao.Impl.ProductDaoImpl;
 import com.Shopping.dao.ProductDao;
 import com.Shopping.model.Product;
 import com.Shopping.service.ProductService;
@@ -8,15 +9,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private final ProductDao productDao;
+    private final ProductDao productDao = new ProductDaoImpl() ;
 
     public ProductServiceImpl() {
 
-        productDao = null;
-    }
-
-    public ProductServiceImpl(ProductDao productDao) {
-        this.productDao = productDao;
     }
 
     @Override
@@ -62,4 +58,5 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductDetails(int productId) {
         return productDao.getProductById(productId);
     }
+
 }

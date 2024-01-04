@@ -1,5 +1,7 @@
 package com.Shopping.service.Impl;
 
+import com.Shopping.dao.Impl.OrderDaoImpl;
+import com.Shopping.dao.Impl.OrderDetailDaoImpl;
 import com.Shopping.dao.OrderDao;
 import com.Shopping.dao.OrderDetailDao;
 import com.Shopping.model.Cart;
@@ -14,25 +16,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
-    private final OrderDao orderDao;
-    private final OrderDetailDao orderDetailDao;
-    private final ProductService productService;
-    private final CartService cartService;
+    private final OrderDao orderDao = new OrderDaoImpl();
+    private final OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
+    private final ProductService productService = new ProductServiceImpl();
+    private final CartService cartService = new CartServiceImpl();
 
     public OrderServiceImpl() {
 
-        orderDao = null;
-        orderDetailDao = null;
-        productService = null;
-        cartService = null;
     }
 
-    public OrderServiceImpl(OrderDao orderDao, OrderDetailDao orderDetailDao, ProductService productService, CartService cartService) {
-        this.orderDao = orderDao;
-        this.orderDetailDao = orderDetailDao;
-        this.productService = productService;
-        this.cartService = cartService;
-    }
 
     @Override
     public Order placeOrderFromCart(int userId, int cartId) {

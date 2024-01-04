@@ -1,5 +1,6 @@
 package com.Shopping.service.Impl;
 
+import com.Shopping.dao.Impl.PaymentRecordDaoImpl;
 import com.Shopping.dao.PaymentRecordDao;
 import com.Shopping.model.PaymentRecord;
 import com.Shopping.service.PaymentRecordService;
@@ -8,15 +9,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class PaymentRecordServiceImpl implements PaymentRecordService {
-    private final PaymentRecordDao paymentRecordDao;
+    private final PaymentRecordDao paymentRecordDao = new PaymentRecordDaoImpl();
 
     public PaymentRecordServiceImpl() {
 
-        paymentRecordDao = null;
-    }
-
-    public PaymentRecordServiceImpl(PaymentRecordDao paymentRecordDao) {
-        this.paymentRecordDao = paymentRecordDao;
     }
 
     @Override

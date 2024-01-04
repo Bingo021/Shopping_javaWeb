@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setRole(int role) {
-        role = role;
+        this.role = role;
     }
 
     public java.sql.Timestamp getCreateTime() {

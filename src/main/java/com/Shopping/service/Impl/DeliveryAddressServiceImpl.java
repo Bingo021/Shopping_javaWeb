@@ -1,6 +1,7 @@
 package com.Shopping.service.Impl;
 
 import com.Shopping.dao.DeliveryAddressDao;
+import com.Shopping.dao.Impl.DeliveryAddressDaoImpl;
 import com.Shopping.model.DeliveryAddress;
 import com.Shopping.service.DeliveryAddressService;
 
@@ -8,17 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DeliveryAddressServiceImpl implements DeliveryAddressService {
-    private final DeliveryAddressDao deliveryAddressDao;
+    private final DeliveryAddressDao deliveryAddressDao = new DeliveryAddressDaoImpl();
 
     public DeliveryAddressServiceImpl() {
 
-        deliveryAddressDao = null;
     }
-
-    public DeliveryAddressServiceImpl(DeliveryAddressDao deliveryAddressDao) {
-        this.deliveryAddressDao = deliveryAddressDao;
-    }
-
     @Override
     public DeliveryAddress addDeliveryAddress(int userId, String recipientName, String recipientPhone, String recipientAddress) {
         DeliveryAddress deliveryAddress = new DeliveryAddress();

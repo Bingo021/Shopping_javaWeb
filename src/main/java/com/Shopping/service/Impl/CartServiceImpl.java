@@ -1,6 +1,7 @@
 package com.Shopping.service.Impl;
 
 import com.Shopping.dao.CartDao;
+import com.Shopping.dao.Impl.CartDaoImpl;
 import com.Shopping.model.Cart;
 import com.Shopping.model.Product;
 import com.Shopping.service.CartService;
@@ -10,20 +11,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CartServiceImpl implements CartService {
-    private final CartDao cartDao;
-    private final ProductService productService;
+    private final CartDao cartDao = new CartDaoImpl();
+    private final ProductService productService = new ProductServiceImpl();
 
     public CartServiceImpl() {
 
-        cartDao = null;
-        productService = null;
     }
-
-    public CartServiceImpl(CartDao cartDao, ProductService productService) {
-        this.cartDao = cartDao;
-        this.productService = productService;
-    }
-
     @Override
     public Cart getCart(int userId) {
         try {
