@@ -90,21 +90,6 @@ public class ShoppingController extends HttpServlet {
         response.sendRedirect("views/login.jsp");
     }
 
-    public void decreaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 具体的购物车数量减少逻辑
-    }
-
-    public void increaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 具体的购物车数量增加逻辑
-    }
-
-    public void removeCartItem(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // 具体的购物车删除商品逻辑
-    }
-
     private void viewOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -128,6 +113,21 @@ public class ShoppingController extends HttpServlet {
 
         request.setAttribute("cartList", cart);
         request.getRequestDispatcher("views/cart.jsp").forward(request, response);
+    }
+
+    public void decreaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // 具体的购物车数量减少逻辑
+    }
+
+    public void increaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // 具体的购物车数量增加逻辑
+    }
+
+    public void removeCartItem(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // 具体的购物车删除商品逻辑
     }
 
     private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
