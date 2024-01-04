@@ -57,11 +57,7 @@ public class CartDaoImpl implements CartDao {
                 cart.setQuantity(resultSet.getInt("Quantity"));
 
                 Product product = new Product();
-
-                System.out.println("ProductName="+resultSet.getString("ProductName"));
                 product.setProductName(resultSet.getString("ProductName"));
-
-
                 product.setPrice(resultSet.getBigDecimal("Price"));
                 cart.setCartProduct(product);
                 cartList.add(cart);

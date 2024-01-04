@@ -27,7 +27,6 @@ public class ShoppingController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        System.out.println("action="+action);
 
         if ("register".equals(action)) {
             registerUser(request, response);
@@ -45,7 +44,7 @@ public class ShoppingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        System.out.println("Doget action="+action );
+
         if ("viewProductDetails".equals(action)) {
             viewProductDetails(request, response);
         } else if ("viewCart".equals(action)) {
@@ -72,13 +71,9 @@ public class ShoppingController extends HttpServlet {
                 response.sendRedirect("index.jsp");
             } else if (role == 1) {
                 // 管理员登录
-                System.out.println("验证管理员");
-                response.sendRedirect( "views/admin.jsp");
+                response.sendRedirect("views/admin.jsp");
             }
-        }
-        else
-        {
-            System.out.println("用户名密码无效");
+        } else {
             request.setAttribute("loginError", "用户名或密码无效");
             response.sendRedirect("views/login.jsp");
         }
@@ -95,18 +90,18 @@ public class ShoppingController extends HttpServlet {
         response.sendRedirect("views/login.jsp");
     }
 
-    public void decreaseCartItemQuantity (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+    public void decreaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // 具体的购物车数量减少逻辑
     }
 
-    public void increaseCartItemQuantity (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+    public void increaseCartItemQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // 具体的购物车数量增加逻辑
     }
 
-    public void removeCartItem (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+    public void removeCartItem(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // 具体的购物车删除商品逻辑
     }
 
@@ -114,12 +109,10 @@ public class ShoppingController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        int userId = user.getUserID();
 
-        List<Order> userOrders = orderService.getOrdersByUserId(userId);
+        List<Order> userOrders = orderService.getOrdersByUserId(user.getUserID());
 
         request.setAttribute("userOrders", userOrders);
-
         request.getRequestDispatcher("views/order.jsp").forward(request, response);
     }
 
@@ -136,6 +129,7 @@ public class ShoppingController extends HttpServlet {
         request.setAttribute("cartList", cart);
         request.getRequestDispatcher("views/cart.jsp").forward(request, response);
     }
+
     private void viewProductDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -147,6 +141,7 @@ public class ShoppingController extends HttpServlet {
 
         request.getRequestDispatcher("views/product.jsp").forward(request, response);
     }
+
     private void placeOrderFromCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // 获取用户ID、购物车ID、收货地址ID、支付方式等信息

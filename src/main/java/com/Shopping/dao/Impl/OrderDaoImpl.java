@@ -2,6 +2,8 @@ package com.Shopping.dao.Impl;
 
 import com.Shopping.dao.OrderDao;
 import com.Shopping.model.Order;
+import com.Shopping.model.OrderDetail;
+import com.Shopping.model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -81,16 +83,20 @@ public class OrderDaoImpl implements OrderDao {
     public List<Order> getUserOrders(int userID) throws SQLException {
         List<Order> orders = new ArrayList<>();
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM orders WHERE UserID = ?");
+            preparedStatement = connection.prepareStatement("SELECT o.OrderID, o.CreateTime, p.ProductName, od.Quantity, od.Price FROM orders o JOIN orderdetails od ON o.OrderID = od.OrderID JOIN products p ON od.ProductID = p.ProductID WHERE o.UserID = ?");
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Order order = new Order();
                 order.setOrderID(resultSet.getInt("OrderID"));
-                order.setUserID(resultSet.getInt("UserID"));
-                order.setProductID(resultSet.getInt("ProductID"));
-                order.setOrderStatus(resultSet.getString("OrderStatus"));
                 order.setCreateTime(resultSet.getTimestamp("CreateTime"));
+                Product product = new Product();
+                product.setProductName(resultSet.getString("ProductName"));
+                order.setOrderProduct(product);
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.setPrice(resultSet.getBigDecimal("Price"));
+                orderDetail.setQuantity(resultSet.getInt("Quantity"));
+                order.setOrderDetail(orderDetail);
                 orders.add(order);
             }
         } catch (Exception e) {

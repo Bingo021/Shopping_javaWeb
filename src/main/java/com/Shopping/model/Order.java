@@ -6,7 +6,8 @@ public class Order {
     private int productID;
     private String orderStatus; // 例如：待支付、已支付等状态
     private java.sql.Timestamp createTime;
-
+    private OrderDetail orderDetail;
+    private Product orderProduct;
 
     public Order(int userID, int productID) {
         this.userID = userID;
@@ -14,6 +15,22 @@ public class Order {
     }
 
     public Order() {
+    }
+
+    public Product getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(Product orderProduct) {
+        this.orderProduct = orderProduct;
+    }
+
+    public OrderDetail getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
     }
 
     public int getOrderID() {

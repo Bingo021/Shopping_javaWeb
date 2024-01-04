@@ -87,9 +87,7 @@
             </label>
             <button class="a2"><a href="#">搜索</a></button>
             <span class="a3">
-                <%
-                    System.out.println(session.getAttribute("user"));
-                    if (session.getAttribute("user") != null) { %>
+                <%if (session.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) session.getAttribute("user")).getUsername() %></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;<a href="Shopping?action=viewCart&userId=${user.userID}">我的购物车</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;<a href="Shopping?action=viewOrder&userId=${user.userID}">订单</a>

@@ -10,6 +10,7 @@ public interface CartService {
     List<Cart> getCart(int userId) throws SQLException;
 
     Cart getCartbyCartId(int cartId);
+
     void addToCart(int userId, Product product, int quantity);
 
     void updateCartItemQuantity(int userId, int productId, int quantity);

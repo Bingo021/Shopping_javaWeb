@@ -7,14 +7,14 @@ public class OrderDetail {
     private int orderID;
     private int productID;
     private int quantity;
-    private double price;
-    private double totalPrice;
+    private BigDecimal price;
+    private BigDecimal totalPrice;
 
     public OrderDetail(int orderID, int productID, int quantity, BigDecimal price) {
         this.orderID = orderID;
         this.productID = productID;
         this.quantity = quantity;
-        this.price = price.doubleValue();
+        this.price = price;
     }
 
     public OrderDetail() {
@@ -53,19 +53,19 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

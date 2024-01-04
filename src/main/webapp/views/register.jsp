@@ -27,7 +27,8 @@
                     <li><label>登录密码：</label> <input type="password" required name="password" class="inp"></li>
                     <li class="safe">安全程度 <em class="ruo">弱</em> <em class="zhong">中</em> <em
                             class="qiang">强</em></li>
-                    <li><label for="">确认密码：</label> <input type="password" required name="password" class="inp"></li>
+                    <li><label for="">确认密码：</label> <input type="password" required name="password" class="inp">
+                    </li>
                     <li class="agree"><input type="checkbox" required name="" id="">
                         同意协议并注册 <a href="#">《知晓用户协议》</a>
                     </li>

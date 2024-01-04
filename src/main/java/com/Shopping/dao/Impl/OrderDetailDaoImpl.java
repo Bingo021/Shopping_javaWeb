@@ -28,8 +28,8 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             preparedStatement.setInt(1, orderDetail.getOrderID());
             preparedStatement.setInt(2, orderDetail.getProductID());
             preparedStatement.setInt(3, orderDetail.getQuantity());
-            preparedStatement.setDouble(4, orderDetail.getPrice());
-            preparedStatement.setDouble(5, orderDetail.getTotalPrice());
+            preparedStatement.setBigDecimal(4, orderDetail.getPrice());
+            preparedStatement.setBigDecimal(5, orderDetail.getTotalPrice());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,8 +59,8 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
                 orderDetail.setOrderDetailID(resultSet.getInt("OrderDetailID"));
                 orderDetail.setProductID(resultSet.getInt("ProductID"));
                 orderDetail.setQuantity(resultSet.getInt("Quantity"));
-                orderDetail.setPrice(resultSet.getDouble("Price"));
-                orderDetail.setTotalPrice(resultSet.getDouble("TotalPrice"));
+                orderDetail.setPrice(resultSet.getBigDecimal("Price"));
+                orderDetail.setTotalPrice(resultSet.getBigDecimal("TotalPrice"));
                 orderDetails.add(orderDetail);
             }
         } catch (SQLException e) {

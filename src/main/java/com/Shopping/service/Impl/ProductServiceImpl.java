@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private final ProductDao productDao = new ProductDaoImpl() ;
+    private final ProductDao productDao = new ProductDaoImpl();
 
     public ProductServiceImpl() {
 

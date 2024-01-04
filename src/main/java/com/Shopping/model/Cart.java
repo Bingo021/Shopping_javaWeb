@@ -13,7 +13,9 @@ public class Cart {
         return userID;
     }
 
-
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
     public int getCartID() {
         return cartID;
@@ -25,10 +27,6 @@ public class Cart {
 
     public int getUserID(int userId) {
         return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public int getProductID() {

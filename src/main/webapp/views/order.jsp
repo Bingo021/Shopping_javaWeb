@@ -1,5 +1,7 @@
 <%@ page import="com.Shopping.model.User" %>
+<%@ page import="com.Shopping.model.Order" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -53,8 +55,8 @@
             <span class="a3">
                 <%if (session.getAttribute("user") != null) { %>
                 <li><a href="#">欢迎，<%= ((User) session.getAttribute("user")).getUsername() %></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/cart.jsp">我的购物车</a>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/views/order.jsp">订单</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="Shopping?action=viewCart&userId=${user.userID}">我的购物车</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="Shopping?action=viewOrder&userId=${user.userID}">订单</a>
                 </li>
                 <% } else { %>
                 <li><a href="${pageContext.request.contextPath}/views/login.jsp">登录</a>
@@ -71,21 +73,23 @@
         <div class="order-item">
             <div class="order-header">
                 <span class="order-number">订单号：${order.orderID}</span>
-                <span class="order-date">下单时间：${order.creatTime}</span>
+                <span class="order-date">下单时间：${order.createTime}</span>
             </div>
             <div class="order-details">
-                <p><strong>商品名称：</strong>${order.productName}</p>
-                <p><strong>数量：</strong>${order.quantity}</p>
-                <p><strong>金额：</strong>${order.totalAmount}</p>
+                <p><strong>商品名称：</strong>${order.orderProduct.productName}</p>
+                <p><strong>数量：</strong>${order.orderDetail.quantity}</p>
+                <p><strong>金额：</strong>${order.orderDetail.price * order.orderDetail.quantity}</p>
             </div>
             <div class="order-actions">
-                <!-- 添加按钮的事件处理逻辑 -->
                 <button class="cancel-btn" onclick="cancelOrder(${order.orderID})">取消订单</button>
                 <button class="edit-btn" onclick="editRecipientInfo(${order.orderID})">编辑收货人信息</button>
                 <button class="confirm-btn" onclick="confirmReceipt(${order.orderID})">确认收货</button>
             </div>
         </div>
     </c:forEach>
+    <c:if test="${empty userOrders}">
+        <p>您还没有订单，快去下单吧！</p>
+    </c:if>
 </div>
 <footer>
     <div class="container">
